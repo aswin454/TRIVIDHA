@@ -1,6 +1,6 @@
 export default function Footer() {
   const whatsappLink = 'https://wa.me/917736687371?text=Hi%20Trividha!%20I%20would%20like%20to%20know%20more%20about%20your%20sarees.';
-  const instagramLink = 'https://instagram.com/trividha';
+  const instagramLink = 'https://www.instagram.com/trividhatraditions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==';
   const facebookLink  = 'https://facebook.com/trividha';
 
   return (

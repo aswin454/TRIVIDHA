@@ -211,7 +211,7 @@ export default function BestOfMonth() {
             <strong>Connect with us on WhatsApp and Instagram to discover more.</strong></p>
           <div className="edit-footer-btns">
             <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn-primary">WhatsApp Us</a>
-            <a href="https://instagram.com/trividha" target="_blank" rel="noopener noreferrer" className="btn-outline">Instagram</a>
+            <a href="https://www.instagram.com/trividhatraditions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="btn-outline">Instagram</a>
           </div>
         </div>
       </section>
