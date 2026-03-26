@@ -60,7 +60,6 @@ export default function HowToShop() {
       }),
       { threshold: 0.1 }
     );
-    [ocasionRef => ocasionRef, processRef].forEach(r => r.current && observer.observe(r.current));
     [occasionsRef, processRef].forEach(r => r.current && observer.observe(r.current));
     return () => observer.disconnect();
   }, []);
@@ -96,7 +95,12 @@ export default function HowToShop() {
             {/* Step tabs */}
             <div className="step-tabs">
               {steps.map((s, i) => (
-                <button key={i} className={`step-tab ${i === activeStep ? 'active' : ''}`} onClick={() => setActiveStep(i)}>
+                <button 
+                  key={i} 
+                  className={`step-tab ${i === activeStep ? 'active' : ''}`} 
+                  onClick={() => setActiveStep(i)}
+                  aria-label={`View step ${i + 1}: ${s.title}`}
+                >
                   <div className="step-tab-indicator">
                     <span className="step-num">{s.num}</span>
                     {i < steps.length - 1 && <div className="step-connector" />}

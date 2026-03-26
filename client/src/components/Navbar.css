@@ -12,8 +12,8 @@
   background: rgba(250, 247, 242, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 30px rgba(100, 10, 21, 0.08);
-  border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+  box-shadow: 0 4px 20px rgba(100, 10, 21, 0.04);
+  border-bottom: none;
 }
 .navbar--hidden {
   transform: translateY(-100%);
@@ -95,8 +95,7 @@
   transform-origin: center;
 }
 .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.hamburger.open span:nth-child(2) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* Mobile Drawer */
 .mobile-drawer {
@@ -136,8 +135,9 @@
   .navbar-links { display: none; }
   .hamburger {
     display: flex;
-    padding: 0.6rem; /* bigger touch target */
-    margin-right: -0.3rem;
+    padding: 0.8rem; /* larger touch target (min 44px) */
+    margin-right: -0.5rem;
+    gap: 8px; /* Increased gap for 2-bar menu */
   }
   .mobile-drawer { display: flex; }
   .navbar-logo img { height: 44px; }
@@ -146,6 +146,6 @@
 
 @media (max-width: 480px) {
   .navbar-logo img { height: 40px; }
-  .mobile-drawer { padding: 0.8rem 1.2rem; }
-  .mobile-nav-link { padding: 0.8rem 0.8rem; font-size: 0.82rem; }
+  .mobile-drawer { padding: 0.8rem 1.25rem; }
+  .mobile-nav-link { padding: 1rem 1rem; font-size: 0.85rem; }
 }

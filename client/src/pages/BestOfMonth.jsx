@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import FloatingLines from './FloatingLines';
 import Silk from './Silk';
+import LazyImage from '../components/LazyImage';
 import './BestOfMonth.css';
 
 const sarees = [
@@ -86,17 +87,18 @@ const waLink = `https://wa.me/917736687371?text=${waMsg}`;
 export default function BestOfMonth() {
   const [active, setActive] = useState(0);
   const [visibleSections, setVisibleSections] = useState({});
+  const heroRef = useRef(null);
   const testimonialsRef = useRef(null);
   const editRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => {
-        if (e.isIntersecting) setVisibleSections(v => ({ ...v, [e.target.id]: true }));
+        setVisibleSections(v => ({ ...v, [e.target.id]: e.isIntersecting }));
       }),
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
-    [testimonialsRef, editRef].forEach(r => r.current && observer.observe(r.current));
+    [heroRef, testimonialsRef, editRef].forEach(r => r.current && observer.observe(r.current));
     return () => observer.disconnect();
   }, []);
 
@@ -105,12 +107,12 @@ export default function BestOfMonth() {
   return (
     <main className="page-wrapper">
       {/* ── Page Hero ──────────────────────────────────── */}
-      <section className="best-hero">
+      <section id="best-hero" ref={heroRef} className="best-hero">
         <div className="hero-silk-bg">
           <Silk
             speed={5}
             scale={1}
-            color="#4b040e"
+            color="#440808"
             noiseIntensity={1.5}
             rotation={0}
           />
@@ -127,7 +129,7 @@ export default function BestOfMonth() {
       <section id="the-edit" ref={editRef} className={`edit-section ${visibleSections['the-edit'] ? 'visible' : ''}`} style={{ position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.6 }}>
           <FloatingLines
-            linesGradient={["#3b0d0d","#e12d2d","#540303","#0e0101"]}
+            linesGradient={["#3b0d0d", "#e12d2d", "#540303", "#0e0101"]}
             animationSpeed={1}
             interactive
             bendRadius={5}
@@ -135,6 +137,7 @@ export default function BestOfMonth() {
             mouseDamping={0.05}
             parallax
             parallaxStrength={0.2}
+            inView={visibleSections['the-edit']}
           />
         </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -153,7 +156,7 @@ export default function BestOfMonth() {
             <div className="spotlight-img">
               {sarees.map((s, i) => (
                 <div key={s.id} className={`spotlight-frame ${i === active ? 'show' : ''}`}>
-                  <img src={s.img} alt={s.name} />
+                  <LazyImage src={s.img} alt={s.name} width="800" height="1000" loading={i === active ? "eager" : "lazy"} />
                   <div className="spotlight-img-overlay">
                     <span className="spotlight-occasion">{s.occasion}</span>
                   </div>
@@ -189,8 +192,13 @@ export default function BestOfMonth() {
           {/* Thumbnail strip */}
           <div className="thumb-strip">
             {sarees.map((s, i) => (
-              <button key={s.id} className={`thumb ${i === active ? 'active' : ''}`} onClick={() => setActive(i)}>
-                <img src={s.img} alt={s.name} />
+              <button
+                key={s.id}
+                className={`thumb ${i === active ? 'active' : ''}`}
+                onClick={() => setActive(i)}
+                aria-label={`View details for ${s.name}`}
+              >
+                <LazyImage src={s.img} alt={s.name} width="80" height="100" loading="lazy" />
               </button>
             ))}
           </div>
@@ -220,7 +228,7 @@ export default function BestOfMonth() {
             {testimonials.map((t, i) => (
               <div key={t.id} className="testi-card card-float" style={{ transitionDelay: `${i * 0.15}s` }}>
                 <div className="testi-img-wrap">
-                  <img src={t.img} alt={t.name} />
+                  <LazyImage src={t.img} alt={t.name} width="400" height="300" loading="lazy" />
                 </div>
                 <div className="testi-body">
                   <span className="testi-quote-mark">"</span>

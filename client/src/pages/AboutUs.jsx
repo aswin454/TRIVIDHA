@@ -10,7 +10,7 @@ const team = [
     role: 'Founder & Chief Curator',
     relation: 'The Mother',
     quote: '"A saree is not just fabric — it is a language only a woman truly speaks."',
-    img: '/photos/team.png',
+    img: '/photos/mother.jpg',
     initial: 'V',
   },
   {
@@ -19,7 +19,7 @@ const team = [
     role: 'Creative Director & Storyteller',
     relation: 'The Daughter',
     quote: '"Every collection we build is a love letter to the women who wore sarees before us."',
-    img: null,
+    img: '/photos/daughter.jpg',
     initial: 'S',
   },
   {
@@ -28,7 +28,7 @@ const team = [
     role: 'Brand Stylist & Community Lead',
     relation: 'Daughter by Destiny',
     quote: '"When you drape a Trividha saree, you carry centuries of grace in six yards."',
-    img: null,
+    img: '/photos/destiny.jpg',
     initial: 'A',
   },
 ];
@@ -117,7 +117,7 @@ export default function AboutUs() {
                 <div className="team-card-top">
                   <div className="member-photo">
                     {member.img
-                      ? <img src={member.img} alt={member.name} />
+                      ? <img src={member.img} alt={member.name} width="300" height="300" loading="lazy" />
                       : <div className="member-initial">{member.initial}</div>
                     }
                   </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 import {
   Clock,
   Mesh,
@@ -229,7 +229,7 @@ function hexToVec3(hex) {
   return new Vector3(r / 255, g / 255, b / 255);
 }
 
-export default function FloatingLines({
+function FloatingLines({
   linesGradient,
   enabledWaves = ['top', 'middle', 'bottom'],
   lineCount = [6],
@@ -244,7 +244,8 @@ export default function FloatingLines({
   mouseDamping = 0.05,
   parallax = true,
   parallaxStrength = 0.2,
-  mixBlendMode = 'screen'
+  mixBlendMode = 'screen',
+  inView = true
 }) {
   const containerRef = useRef(null);
   const targetMouseRef = useRef(new Vector2(-1000, -1000));
@@ -253,6 +254,11 @@ export default function FloatingLines({
   const currentInfluenceRef = useRef(0);
   const targetParallaxRef = useRef(new Vector2(0, 0));
   const currentParallaxRef = useRef(new Vector2(0, 0));
+  const inViewRef = useRef(inView);
+
+  useEffect(() => {
+    inViewRef.current = inView;
+  }, [inView]);
 
   const getLineCount = waveType => {
     if (typeof lineCount === 'number') return lineCount;
@@ -420,6 +426,8 @@ export default function FloatingLines({
     let raf = 0;
     const renderLoop = () => {
       if (!active) return;
+      raf = requestAnimationFrame(renderLoop);
+      if (!inViewRef.current) return;
 
       uniforms.iTime.value = clock.getElapsedTime();
 
@@ -437,7 +445,6 @@ export default function FloatingLines({
       }
 
       renderer.render(scene, camera);
-      raf = requestAnimationFrame(renderLoop);
     };
     renderLoop();
 
@@ -489,3 +496,5 @@ export default function FloatingLines({
     />
   );
 }
+
+export default memo(FloatingLines);

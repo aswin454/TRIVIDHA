@@ -190,7 +190,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 28vw, 340px), 1fr));
   gap: 1.5rem;
 }
 .occasion-card {
@@ -299,8 +299,6 @@
     pointer-events: auto;
     animation: fadeUp 0.45s ease forwards;
   }
-
-  .occasions-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Large phone (≤640px) */

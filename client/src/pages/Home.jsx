@@ -46,25 +46,37 @@ export default function Home() {
         <div className="hero-slider">
           {heroSlides.map((slide, i) => (
             <div key={i} className={`hero-slide ${i === current ? 'active' : ''}`}>
-              <img src={slide.src} alt={slide.alt} />
+              <img 
+                src={slide.src} 
+                alt={slide.alt} 
+                width="1920" 
+                height="1080" 
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "low"}
+              />
               <div className="hero-slide-overlay" />
             </div>
           ))}
           {/* Slide dots */}
           <div className="hero-dots">
             {heroSlides.map((_, i) => (
-              <button key={i} className={`hero-dot ${i === current ? 'active' : ''}`} onClick={() => setCurrent(i)} aria-label={`Slide ${i + 1}`} />
+              <button 
+                key={i} 
+                className={`hero-dot ${i === current ? 'active' : ''}`} 
+                onClick={() => setCurrent(i)} 
+                aria-label={`Go to slide ${i + 1}`} 
+              />
             ))}
           </div>
         </div>
 
         {/* Text */}
         <div className="hero-content">
-          <span className="section-label hero-label">Est. 2024 · Handpicked Heritage</span>
+          <span className="section-label hero-label">HANDPICKED HERITAGE. CURATED FOR YOU</span>
           <h1 className="hero-headline">
             Trividha:<br />
-            <em>Weaving Grace</em><br />
-            into Every Fold.
+            <em>For Moments </em><br />
+            You'll Remember.
           </h1>
           <p className="hero-subtext">
             Where thread becomes tradition, and every drape carries<br className="br-desktop" /> the quiet poetry of a woman's soul.
@@ -75,7 +87,7 @@ export default function Home() {
           </div>
           {/* Floating badge */}
           <div className="hero-badge float-anim">
-            <span className="hero-badge-number">200+</span>
+            <span className="hero-badge-number">1000+</span>
             <span className="hero-badge-text">Sarees Handpicked</span>
           </div>
         </div>
@@ -110,6 +122,9 @@ export default function Home() {
                       <img
                         src="/photos/logo_new.png"
                         alt="Trividha Logo"
+                        width="400"
+                        height="400"
+                        loading="lazy"
                         style={{ width: "85%", height: "85%", objectFit: "contain" }}
                       />
                     </div>
@@ -161,7 +176,7 @@ export default function Home() {
             {sareeHighlights.map((s, i) => (
               <div key={s.id} className="highlight-card card-float" style={{ animationDelay: `${i * 0.15}s` }}>
                 <div className="highlight-img-wrap">
-                  <img src={s.src} alt={s.name} />
+                  <img src={s.src} alt={s.name} width="600" height="800" loading="lazy" />
                   <div className="highlight-overlay">
                     <Link to="/best" className="btn-gold">View Full Edit</Link>
                   </div>

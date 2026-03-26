@@ -21,17 +21,17 @@ export default function Navbar() {
     const onScroll = () => {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 40);
-      
+
       // If scrolling down and past the header, hide it. Otherwise, show it.
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setHidden(true);
       } else {
         setHidden(false);
       }
-      
+
       lastScrollY.current = currentScrollY;
     };
-    
+
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -43,7 +43,7 @@ export default function Navbar() {
       <div className="navbar-inner">
         {/* Logo */}
         <NavLink to="/" className="navbar-logo">
-          <img src="/photos/1.png" alt="Trividha Logo" />
+          <img src="/photos/1.png" alt="Trividha Logo" width="40" height="40" loading="eager" />
         </NavLink>
 
         {/* Desktop Nav */}
@@ -60,7 +60,7 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-          <span /><span /><span />
+          <span /><span />
         </button>
       </div>
 
