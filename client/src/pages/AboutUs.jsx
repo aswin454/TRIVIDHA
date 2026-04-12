@@ -7,27 +7,27 @@ const team = [
   {
     id: 1,
     name: 'Vijayalekshmi',
-    role: 'Founder & Chief Curator',
+    role: 'The OG Saree Lover & The Heart Of Trividha',
     relation: 'The Mother',
-    quote: '"A saree is not just fabric — it is a language only a woman truly speaks."',
+    quote: '"I have loved sarees for as long as I can remember. Seeing that same love live on in my daughter feels deeply special to me. Through Trividha, we are simply sharing that love with every woman out there."',
     img: '/photos/mother.jpg',
     initial: 'V',
   },
   {
     id: 2,
     name: 'Sethuparvathy',
-    role: 'Creative Director & Storyteller',
+    role: 'Founder, Creative Director & Chief Storyteller',
     relation: 'The Daughter',
-    quote: '"Every collection we build is a love letter to the women who wore sarees before us."',
+    quote: '"Trividha is not just a business to me… it is my true passion project. This is where I’m pouring my heart, and I’m beyond excited to finally bring it into the world."',
     img: '/photos/daughter.jpg',
     initial: 'S',
   },
   {
     id: 3,
     name: 'Aparna',
-    role: 'Brand Stylist & Community Lead',
+    role: 'Managing Director & Community Lead',
     relation: 'Daughter by Destiny',
-    quote: '"When you drape a Trividha saree, you carry centuries of grace in six yards."',
+    quote: '"I came into this loving family as a daughter-in-law, but Trividha brought us even closer. To me, this is not just a family brand… it is about curating moments our customers will carry with them forever."',
     img: '/photos/destiny.jpg',
     initial: 'A',
   },
@@ -89,9 +89,8 @@ export default function AboutUs() {
         </div>
         <div className="container about-hero-content">
           <span className="section-label">The Trividha Family</span>
-          <span className="gold-line" />
           <h1>Meet The Team…<br /><em>Meet The Family.</em></h1>
-          <p className="about-hero-sub">Three women. One shared love for the art of the saree. And an unshakeable belief that every woman deserves to feel like poetry.</p>
+          <p className="about-hero-sub">Three women. One shared love for the art of the sarees.</p>
         </div>
       </section>
 
@@ -113,7 +112,7 @@ export default function AboutUs() {
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className={`team-grid ${visibleSections.team ? 'visible' : ''}`}>
             {team.map((member, i) => (
-              <div key={member.id} className="team-card card-float" style={{ transitionDelay: `${i * 0.18}s` }}>
+              <div key={member.id} className="team-card card-float" style={{ transitionDelay: `${i * 0.35}s` }}>
                 <div className="team-card-top">
                   <div className="member-photo">
                     {member.img
@@ -146,7 +145,7 @@ export default function AboutUs() {
           </div>
           <div className={`pillars-grid ${visibleSections.pillars ? 'visible' : ''}`}>
             {pillars.map((p, i) => (
-              <div key={i} className="pillar-card" style={{ transitionDelay: `${i * 0.2}s` }}>
+              <div key={i} className="pillar-card" style={{ transitionDelay: `${i * 0.4}s` }}>
                 <div className="pillar-icon-wrap">
                   <span className="pillar-icon">{p.icon}</span>
                 </div>

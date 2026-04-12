@@ -61,9 +61,9 @@ const testimonials = [
   {
     id: 1,
     img: '/photos/9.png',
-    name: 'Meera R.',
-    location: 'Kochi',
-    quote: 'I wore a Trividha saree to my daughter\'s first birthday. Every guest asked where I got it. The quality is extraordinary and the curation process felt so personal.',
+    name: 'Maria Thomas',
+    location: 'Dubai, United Arab Emirates',
+    quote: 'I honestly had zero knowledge about sarees. All I did was share what I liked... my colours, the occasion, and what I felt comfortable wearing. Parvathy understood it so naturally and curated something that felt completely like me. It didn’t feel like choosing a saree. It felt like finding one that was already mine. Truly a 10/10 experience in saree curation.',
   },
   {
     id: 2,
@@ -83,6 +83,8 @@ const testimonials = [
 
 const waMsg = encodeURIComponent('Hi Trividha! I saw your monthly edit and I\'d love to know more and reserve a saree.');
 const waLink = `https://wa.me/917736687371?text=${waMsg}`;
+
+const FLOATING_LINES_GRADIENT = ["#3b0d0d", "#e12d2d", "#540303", "#0e0101"];
 
 export default function BestOfMonth() {
   const [active, setActive] = useState(0);
@@ -118,7 +120,7 @@ export default function BestOfMonth() {
           />
         </div>
         <div className="best-hero-content container">
-          <span className="section-label">March 2026 Edition</span>
+          <span className="section-label">{new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })} Edition</span>
           <span className="gold-line" />
           <h1>The Curator's Edit.</h1>
           <p>Our hand-selected five — sarees that stopped us mid-breath this month.</p>
@@ -129,7 +131,7 @@ export default function BestOfMonth() {
       <section id="the-edit" ref={editRef} className={`edit-section ${visibleSections['the-edit'] ? 'visible' : ''}`} style={{ position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.6 }}>
           <FloatingLines
-            linesGradient={["#3b0d0d", "#e12d2d", "#540303", "#0e0101"]}
+            linesGradient={FLOATING_LINES_GRADIENT}
             animationSpeed={1}
             interactive
             bendRadius={5}

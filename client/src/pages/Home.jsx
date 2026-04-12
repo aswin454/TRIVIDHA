@@ -46,11 +46,11 @@ export default function Home() {
         <div className="hero-slider">
           {heroSlides.map((slide, i) => (
             <div key={i} className={`hero-slide ${i === current ? 'active' : ''}`}>
-              <img 
-                src={slide.src} 
-                alt={slide.alt} 
-                width="1920" 
-                height="1080" 
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                width="1920"
+                height="1080"
                 loading={i === 0 ? "eager" : "lazy"}
                 fetchPriority={i === 0 ? "high" : "low"}
               />
@@ -60,11 +60,11 @@ export default function Home() {
           {/* Slide dots */}
           <div className="hero-dots">
             {heroSlides.map((_, i) => (
-              <button 
-                key={i} 
-                className={`hero-dot ${i === current ? 'active' : ''}`} 
-                onClick={() => setCurrent(i)} 
-                aria-label={`Go to slide ${i + 1}`} 
+              <button
+                key={i}
+                className={`hero-dot ${i === current ? 'active' : ''}`}
+                onClick={() => setCurrent(i)}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
@@ -79,7 +79,7 @@ export default function Home() {
             You'll Remember.
           </h1>
           <p className="hero-subtext">
-            Where thread becomes tradition, and every drape carries<br className="br-desktop" /> the quiet poetry of a woman's soul.
+            From quiet everyday grace to life’s most meaningful celebrations, we handpick sarees across budgets and occasions, curating each piece with love, intention, and generational care<br className="br-desktop" /> the quiet poetry of a woman's soul.
           </p>
           <div className="hero-actions">
             <Link to="/best" className="btn-primary">Discover This Month's Edit</Link>

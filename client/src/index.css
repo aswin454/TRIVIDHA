@@ -20,7 +20,7 @@
   --shadow-lift: 0 20px 60px rgba(100, 10, 21, 0.18);
   --radius:      16px;
   --radius-sm:   8px;
-  --transition:  all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  --transition:  all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 html { scroll-behavior: smooth; }
@@ -238,8 +238,43 @@ button {
 .footer-copyright {
   font-size: 0.78rem;
   letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 .footer-copyright strong { color: var(--gold-light); }
+
+.developer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  transition: all 0.3s ease;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(201, 169, 110, 0.05);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.developer-link:hover {
+  color: var(--white);
+  background: rgba(201, 169, 110, 0.2);
+  transform: translateY(-2px);
+}
+
+.developer-icon, .developer-logo-img {
+  width: auto;
+  height: 28px;
+  display: block;
+}
+
+.developer-logo-img {
+  filter: brightness(1.2) contrast(1.1);
+}
 
 /* ─── Mobile Global Fixes ──────────────────────────────────── */
 @media (max-width: 768px) {

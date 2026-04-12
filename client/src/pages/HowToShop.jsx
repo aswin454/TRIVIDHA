@@ -76,7 +76,6 @@ export default function HowToShop() {
       <section className="shop-hero">
         <div className="container shop-hero-content">
           <span className="section-label">Simple, Warm, Personal</span>
-          <span className="gold-line" />
           <h1>How to Shop<br /><em>with Trividha.</em></h1>
           <p>No cart. No checkout. Just a conversation — and a saree chosen just for you.</p>
           <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ marginTop: '2rem', display: 'inline-flex' }}>Begin Your Journey →</a>

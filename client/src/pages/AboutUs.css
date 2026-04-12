@@ -74,7 +74,7 @@
   gap: clamp(1.5rem, 3vw, 3rem);
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 2.5s ease, transform 2.5s ease;
 }
 .team-grid.visible {
   opacity: 1;
@@ -178,7 +178,7 @@
   gap: clamp(1.5rem, 2vw, 2.5rem);
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 1.5s ease, transform 1.5s ease;
 }
 .pillars-grid.visible {
   opacity: 1;

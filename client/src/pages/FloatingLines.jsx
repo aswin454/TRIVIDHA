@@ -295,8 +295,11 @@ function FloatingLines({
 
     const renderer = new WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0); 
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
+    renderer.domElement.style.opacity = '0';
+    renderer.domElement.style.transition = 'opacity 0.5s ease-in-out';
     container.appendChild(renderer.domElement);
 
     const uniforms = {
@@ -445,6 +448,9 @@ function FloatingLines({
       }
 
       renderer.render(scene, camera);
+      if (renderer.domElement.style.opacity === '0') {
+        renderer.domElement.style.opacity = '1';
+      }
     };
     renderLoop();
 
