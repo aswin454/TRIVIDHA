@@ -75,7 +75,7 @@ export default function Album() {
               <p>Follow us for daily drapes and heritage stories.</p>
             </div>
             <a
-              href="https://www.instagram.com/trividhatraditions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              href="https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noopener noreferrer"
               className="btn-instagram"
@@ -97,7 +97,7 @@ export default function Album() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="instagram-item"
-                onClick={() => window.open('https://www.instagram.com/trividhatraditions', '_blank')}
+                onClick={() => window.open('https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', '_blank')}
               >
                 <div className="instagram-img-wrapper">
                   <img src={photo.src} alt={photo.alt} loading="lazy" />
@@ -117,10 +117,10 @@ export default function Album() {
             <p className="footer-text">Capturing elegance, one thread at a time.</p>
             <div className="footer-divider" />
             <div className="gallery-footer-btns">
-              <a 
-                href="https://wa.me/917736687371?text=Hi%20Trividha!%20I%20saw%20your%20Album%20and%20I'd%20love%20to%20know%20more%20about%20your%20sarees." 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}
               >
@@ -128,7 +128,7 @@ export default function Album() {
                 WhatsApp Inquiry
               </a>
               <br />
-              <a href="https://www.instagram.com/trividhatraditions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="btn-outline">
+              <a href="https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="btn-outline">
                 Visit Official Profile
               </a>
             </div>

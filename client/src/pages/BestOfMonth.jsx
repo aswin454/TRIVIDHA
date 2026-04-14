@@ -82,7 +82,7 @@ const testimonials = [
 ];
 
 const waMsg = encodeURIComponent('Hi Trividha! I saw your monthly edit and I\'d love to know more and reserve a saree.');
-const waLink = `https://wa.me/917736687371?text=${waMsg}`;
+const waLink = `https://wa.link/7kuigp`;
 
 const FLOATING_LINES_GRADIENT = ["#3b0d0d", "#e12d2d", "#540303", "#0e0101"];
 
