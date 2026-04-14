@@ -7,7 +7,6 @@ import AboutUs from './pages/AboutUs';
 import BestOfMonth from './pages/BestOfMonth';
 import HowToShop from './pages/HowToShop';
 import Album from './pages/Album';
-import WhatsAppButton from './components/WhatsAppButton';
 
 export default function App() {
   return (
@@ -21,7 +20,6 @@ export default function App() {
         <Route path="/shop" element={<HowToShop />} />
         <Route path="/album" element={<Album />} />
       </Routes>
-      <WhatsAppButton />
       <Footer />
     </BrowserRouter>
   );
