@@ -4,7 +4,7 @@ import './WhatsAppButton.css';
 export default function WhatsAppButton() {
   const phoneNumber = '917736687371';
   const message = encodeURIComponent("Hi Trividha! I'm browsing your website and would love to know more about your collection.");
-  const waLink = `https://wa.me/${phoneNumber}?text=${message}`;
+  const waLink = `https://wa.link/7kuigp?text=${message}`;
 
   return (
     <motion.a
@@ -16,9 +16,9 @@ export default function WhatsAppButton() {
       animate={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 260, 
+      transition={{
+        type: "spring",
+        stiffness: 260,
         damping: 20,
         delay: 2 // Show after 2 seconds to not clutter the initial load
       }}
