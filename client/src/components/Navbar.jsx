@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, Users, Star, ShoppingBag, Image } from 'lucide-react';
+import { Home, Users, Star, ShoppingBag, Image, Sparkles } from 'lucide-react';
 import './Navbar.css';
 
 const navItems = [
   { path: '/', label: 'Home', icon: Home },
   { path: '/about', label: 'About Us', icon: Users },
-  { path: '/best', label: 'Best of Month', icon: Star },
+  { path: '/oursarees', label: 'Our Sarees', icon: Sparkles },
   { path: '/shop', label: 'Shop', icon: ShoppingBag },
   { path: '/album', label: 'Album', icon: Image },
 ];
