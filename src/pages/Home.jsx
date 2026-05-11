@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import PixelTransition from './PixelTransition';
+import LazyImage from '../components/LazyImage';
 import './Home.css';
 
 const heroSlides = [
@@ -14,11 +15,36 @@ const sareeHighlights = [
   { id: 3, src: '/photos/6.png', name: 'Chanderi Cotton Bloom', occasion: 'Corporate Chic' },
 ];
 
+const testimonials = [
+  {
+    id: 1,
+    img: '/photos/9.png',
+    name: 'Maria Thomas',
+    location: 'Dubai, United Arab Emirates',
+    quote: 'I honestly had zero knowledge about sarees. All I did was share what I liked... my colours, the occasion, and what I felt comfortable wearing. Parvathy understood it so naturally and curated something that felt completely like me. It didn’t feel like choosing a saree. It felt like finding one that was already mine. Truly a 10/10 experience in saree curation.',
+  },
+  {
+    id: 2,
+    img: '/photos/10.png',
+    name: 'Divya M.',
+    location: 'Chennai',
+    quote: 'Sethuparvathy helped me pick the perfect saree for my first board meeting. I walked in with confidence I didn\'t know a piece of fabric could give me.',
+  },
+  {
+    id: 3,
+    img: '/photos/11.png',
+    name: 'Anitha K.',
+    location: 'Bengaluru',
+    quote: 'What sets Trividha apart is the love behind every recommendation. It\'s not just shopping, it\'s a conversation with someone who truly understands sarees.',
+  },
+];
+
 export default function Home() {
   const [current, setCurrent] = useState(0);
   const [isVisible, setIsVisible] = useState({});
   const storyRef = useRef(null);
   const highlightRef = useRef(null);
+  const testimonialsRef = useRef(null);
 
   // Hero slider auto-advance
   useEffect(() => {
@@ -34,7 +60,7 @@ export default function Home() {
       }),
       { threshold: 0.15 }
     );
-    [storyRef, highlightRef].forEach(r => r.current && observer.observe(r.current));
+    [storyRef, highlightRef, testimonialsRef].forEach(r => r.current && observer.observe(r.current));
     return () => observer.disconnect();
   }, []);
 
@@ -82,7 +108,7 @@ export default function Home() {
             From quiet everyday grace to life’s most meaningful celebrations, we handpick sarees across budgets and occasions, curating each piece with love, intention, and generational care<br className="br-desktop" /> the quiet poetry of a woman's soul.
           </p>
           <div className="hero-actions">
-            <Link to="/best" className="btn-primary">Discover This Month's Edit</Link>
+            <Link to="/oursarees" className="btn-primary">Discover Our Sarees</Link>
             <Link to="/shop" className="btn-outline">How to Shop</Link>
           </div>
           {/* Floating badge */}
@@ -178,7 +204,7 @@ export default function Home() {
                 <div className="highlight-img-wrap">
                   <img src={s.src} alt={s.name} width="600" height="800" loading="lazy" />
                   <div className="highlight-overlay">
-                    <Link to="/best" className="btn-gold">View Full Edit</Link>
+                    <Link to="/oursarees" className="btn-gold">View Collection</Link>
                   </div>
                 </div>
                 <div className="highlight-info">
@@ -189,7 +215,35 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/best" className="btn-primary">See All 5 Picks of the Month →</Link>
+            <Link to="/oursarees" className="btn-primary">See All Our Sarees →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ───────────────────────────────── */}
+      <section id="testimonials-section" ref={testimonialsRef} className={`testimonials-section ${isVisible['testimonials-section'] ? 'visible' : ''}`}>
+        <div className="container">
+          <div className="testi-header">
+            <span className="section-label">Real Women, Real Moments</span>
+            <span className="gold-line" style={{ margin: '0.8rem auto' }} />
+            <h2 className="section-title">Love Stories.</h2>
+          </div>
+          <div className="testi-grid">
+            {testimonials.map((t, i) => (
+              <div key={t.id} className="testi-card card-float" style={{ animationDelay: `${i * 0.15}s` }}>
+                <div className="testi-img-wrap">
+                  <LazyImage src={t.img} alt={t.name} width="400" height="300" loading="lazy" />
+                </div>
+                <div className="testi-body">
+                  <span className="testi-quote-mark">"</span>
+                  <p className="testi-quote">{t.quote}</p>
+                  <div className="testi-author">
+                    <span className="testi-name">{t.name}</span>
+                    <span className="testi-location">{t.location}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
