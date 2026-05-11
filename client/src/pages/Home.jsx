@@ -4,15 +4,19 @@ import PixelTransition from './PixelTransition';
 import LazyImage from '../components/LazyImage';
 import './Home.css';
 
+import g4 from '../../../photos/g4.jpeg';
+import g7 from '../../../photos/g7.jpeg';
+import g11 from '../../../photos/g11.jpeg';
+
 const heroSlides = [
   { src: '/photos/2.jpeg', alt: 'Trividha Heritage Saree Collection' },
   { src: '/photos/3.jpeg', alt: 'Trividha Signature Drape' },
 ];
 
 const sareeHighlights = [
-  { id: 1, src: '/photos/4.png', name: 'Banarasi Silk Grace', occasion: 'Wedding Season' },
-  { id: 2, src: '/photos/5.png', name: 'Kanjivaram Heritage', occasion: 'Festive Wear' },
-  { id: 3, src: '/photos/6.png', name: 'Chanderi Cotton Bloom', occasion: 'Corporate Chic' },
+  { id: 1, src: g4, name: 'Banarasi Heritage Drape', occasion: 'Wedding Season' },
+  { id: 2, src: g7, name: 'Chanderi Summer Bloom', occasion: 'Corporate Chic' },
+  { id: 3, src: g11, name: 'Pochampally Ikat Splendor', occasion: 'Festive Wear' },
 ];
 
 const testimonials = [

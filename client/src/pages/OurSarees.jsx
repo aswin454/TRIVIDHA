@@ -70,6 +70,27 @@ function SareeCard({ saree, index }) {
   const nextImg = () => setActiveImg((prev) => (prev + 1) % saree.images.length);
   const prevImg = () => setActiveImg((prev) => (prev - 1 + saree.images.length) % saree.images.length);
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) nextImg();
+    if (isRightSwipe) prevImg();
+  };
+
   return (
     <div 
       ref={cardRef} 
@@ -77,7 +98,12 @@ function SareeCard({ saree, index }) {
       style={{ animationDelay: `${index * 0.15}s` }}
     >
       <div className="saree-gallery">
-        <div className="main-image">
+        <div 
+          className="main-image"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {saree.images.map((img, i) => (
             <div key={i} className={`img-wrapper ${i === activeImg ? 'active' : ''}`}>
               <LazyImage src={img} alt={`${saree.name} view ${i + 1}`} width="500" height="700" loading="lazy" />
