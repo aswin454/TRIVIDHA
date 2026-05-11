@@ -3,20 +3,64 @@ import { motion } from 'framer-motion';
 import { Instagram, Image as ImageIcon, ExternalLink } from 'lucide-react';
 import './Album.css';
 
+import g1 from '../../../photos/g1.jpeg';
+import g2 from '../../../photos/g2.jpeg';
+import g3 from '../../../photos/g3.jpeg';
+import g4 from '../../../photos/g4.jpeg';
+import g5 from '../../../photos/g5.jpeg';
+import g6 from '../../../photos/g6.jpeg';
+import g7 from '../../../photos/g7.jpeg';
+import g8 from '../../../photos/g8.jpeg';
+import g9 from '../../../photos/g9.jpeg';
+import g10 from '../../../photos/g10.jpeg';
+import g11 from '../../../photos/g11.jpeg';
+import g12 from '../../../photos/g12.jpeg';
+
+
 const instagramPhotos = [
-  { id: 1, src: '/photos/4.png', alt: 'Trividha Heritage Collection' },
-  { id: 2, src: '/photos/5.png', alt: 'Signature Silk Saree' },
-  { id: 3, src: '/photos/6.png', alt: 'Elegant Drapes' },
-  { id: 4, src: '/photos/7.png', alt: 'Handpicked Heritage' },
-  { id: 5, src: '/photos/8.png', alt: 'Traditional Grace' },
-  { id: 6, src: '/photos/9.png', alt: 'Modern Elegance' },
-  { id: 7, src: '/photos/10.png', alt: 'Premium Collection' },
-  { id: 8, src: '/photos/11.png', alt: 'Timeless Beauty' },
-  { id: 9, src: '/photos/2.jpeg', alt: 'Festival Special' },
+  { id: 1, src: g1, alt: 'Trividha Heritage Collection' },
+  { id: 2, src: g2, alt: 'Signature Silk Saree' },
+  { id: 3, src: g3, alt: 'Elegant Drapes' },
+  { id: 4, src: g4, alt: 'Handpicked Heritage' },
+  { id: 5, src: g5, alt: 'Handpicked Heritage' },
+  { id: 6, src: g6, alt: 'Modern Elegance' },
+  { id: 7, src: g7, alt: 'Modern Elegance' },
+  { id: 8, src: g8, alt: 'Modern Elegance' },
+  { id: 9, src: g9, alt: 'Modern Elegance' },
+  { id: 10, src: g10, alt: 'Modern Elegance' },
+  { id: 11, src: g11, alt: 'Modern Elegance' },
+  { id: 12, src: g12, alt: 'Modern Elegance' },
+
 ];
+
+function useColumns() {
+  const [cols, setCols] = useState(3);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 480) setCols(1);
+      else if (window.innerWidth <= 992) setCols(2);
+      else setCols(3);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return cols;
+}
 
 export default function Album() {
   const [activeTab, setActiveTab] = useState('all');
+
+  const columnsCount = useColumns();
+
+  const columns = Array.from({ length: columnsCount }, () => []);
+
+  // Sort photos by ID descending (highest first, lowest last)
+  const sortedPhotos = [...instagramPhotos].sort((a, b) => b.id - a.id);
+
+  sortedPhotos.forEach((photo, index) => {
+    columns[index % columnsCount].push(photo);
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -85,33 +129,34 @@ export default function Album() {
             </a>
           </div>
 
-          <motion.div
-            layout
-            className="instagram-grid"
-          >
-            {instagramPhotos.map((photo, index) => (
-              <motion.div
-                key={photo.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="instagram-item"
-                onClick={() => window.open('https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', '_blank')}
-              >
-                <div className="instagram-img-wrapper">
-                  <img src={photo.src} alt={photo.alt} loading="lazy" />
-                  <div className="instagram-overlay">
-                    <div className="overlay-content">
-                      <Instagram size={24} color="white" />
-                      <span>View on Instagram</span>
-                      <ExternalLink size={14} className="external-icon" />
+          <div className="instagram-grid-masonry">
+            {columns.map((col, colIndex) => (
+              <div key={colIndex} className="grid-col">
+                {col.map((photo, index) => (
+                  <motion.div
+                    key={photo.id}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="instagram-item"
+                    onClick={() => window.open('https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', '_blank')}
+                  >
+                    <div className="instagram-img-wrapper">
+                      <img src={photo.src} alt={photo.alt} loading="lazy" />
+                      <div className="instagram-overlay">
+                        <div className="overlay-content">
+                          <Instagram size={24} color="white" />
+                          <span>View on Instagram</span>
+                          <ExternalLink size={14} className="external-icon" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
+                  </motion.div>
+                ))}
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           <div className="gallery-footer">
             <p className="footer-text">Capturing elegance, one thread at a time.</p>

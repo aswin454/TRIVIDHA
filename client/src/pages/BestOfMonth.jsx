@@ -57,29 +57,7 @@ const sarees = [
   },
 ];
 
-const testimonials = [
-  {
-    id: 1,
-    img: '/photos/9.png',
-    name: 'Maria Thomas',
-    location: 'Dubai, United Arab Emirates',
-    quote: 'I honestly had zero knowledge about sarees. All I did was share what I liked... my colours, the occasion, and what I felt comfortable wearing. Parvathy understood it so naturally and curated something that felt completely like me. It didn’t feel like choosing a saree. It felt like finding one that was already mine. Truly a 10/10 experience in saree curation.',
-  },
-  {
-    id: 2,
-    img: '/photos/10.png',
-    name: 'Divya M.',
-    location: 'Chennai',
-    quote: 'Sethuparvathy helped me pick the perfect saree for my first board meeting. I walked in with confidence I didn\'t know a piece of fabric could give me.',
-  },
-  {
-    id: 3,
-    img: '/photos/11.png',
-    name: 'Anitha K.',
-    location: 'Bengaluru',
-    quote: 'What sets Trividha apart is the love behind every recommendation. It\'s not just shopping, it\'s a conversation with someone who truly understands sarees.',
-  },
-];
+
 
 const waMsg = encodeURIComponent('Hi Trividha! I saw your monthly edit and I\'d love to know more and reserve a saree.');
 const waLink = `https://wa.link/7kuigp`;
@@ -90,7 +68,6 @@ export default function BestOfMonth() {
   const [active, setActive] = useState(0);
   const [visibleSections, setVisibleSections] = useState({});
   const heroRef = useRef(null);
-  const testimonialsRef = useRef(null);
   const editRef = useRef(null);
 
   useEffect(() => {
@@ -100,7 +77,7 @@ export default function BestOfMonth() {
       }),
       { threshold: 0.1 }
     );
-    [heroRef, testimonialsRef, editRef].forEach(r => r.current && observer.observe(r.current));
+    [heroRef, editRef].forEach(r => r.current && observer.observe(r.current));
     return () => observer.disconnect();
   }, []);
 
@@ -218,33 +195,6 @@ export default function BestOfMonth() {
         </div>
       </section>
 
-      {/* ── Testimonials ───────────────────────────────── */}
-      <section id="testimonials" ref={testimonialsRef} className={`testimonials-section ${visibleSections.testimonials ? 'visible' : ''}`}>
-        <div className="container">
-          <div className="testi-header">
-            <span className="section-label">Real Women, Real Moments</span>
-            <span className="gold-line" style={{ margin: '0.8rem auto' }} />
-            <h2 className="section-title">Love Stories.</h2>
-          </div>
-          <div className="testi-grid">
-            {testimonials.map((t, i) => (
-              <div key={t.id} className="testi-card card-float" style={{ transitionDelay: `${i * 0.15}s` }}>
-                <div className="testi-img-wrap">
-                  <LazyImage src={t.img} alt={t.name} width="400" height="300" loading="lazy" />
-                </div>
-                <div className="testi-body">
-                  <span className="testi-quote-mark">"</span>
-                  <p className="testi-quote">{t.quote}</p>
-                  <div className="testi-author">
-                    <span className="testi-name">{t.name}</span>
-                    <span className="testi-location">{t.location}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
