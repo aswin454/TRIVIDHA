@@ -15,6 +15,9 @@ import g9 from '../../../photos/g9.jpeg';
 import g10 from '../../../photos/g10.jpeg';
 import g11 from '../../../photos/g11.jpeg';
 import g12 from '../../../photos/g12.jpeg';
+import g13 from '../../../photos/g13.jpeg';
+import g14 from '../../../photos/g14.jpeg';
+import g15 from '../../../photos/g15.jpeg';
 
 
 const instagramPhotos = [
@@ -30,7 +33,9 @@ const instagramPhotos = [
   { id: 10, src: g10, alt: 'Modern Elegance' },
   { id: 11, src: g11, alt: 'Modern Elegance' },
   { id: 12, src: g12, alt: 'Modern Elegance' },
-
+  { id: 13, src: g13, alt: 'Modern Elegance' },
+  { id: 14, src: g14, alt: 'Modern Elegance' },
+  { id: 15, src: g15, alt: 'Modern Elegance' },
 ];
 
 function useColumns() {
