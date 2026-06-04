@@ -7,8 +7,10 @@ function PixelTransition({
   secondContent,
   gridSize = 7,
   pixelColor = 'currentColor',
-  animationStepDuration = 0.3,
+  animationStepDuration = 0.4,
   once = false,
+  autoPlay = false,
+  autoPlayInterval = 4000,
   aspectRatio = '100%',
   className = '',
   style = {}
@@ -19,6 +21,7 @@ function PixelTransition({
   const delayedCallRef = useRef(null);
 
   const [isActive, setIsActive] = useState(false);
+  const isActiveRef = useRef(false);
 
   const isTouchDevice =
     'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches;
@@ -47,6 +50,7 @@ function PixelTransition({
 
   const animatePixels = activate => {
     setIsActive(activate);
+    isActiveRef.current = activate;
 
     const pixelGridEl = pixelGridRef.current;
     const activeEl = activeRef.current;
@@ -100,6 +104,14 @@ function PixelTransition({
     if (!isActive) animatePixels(true);
     else if (isActive && !once) animatePixels(false);
   };
+
+  useEffect(() => {
+    if (!autoPlay) return;
+    const intervalId = setInterval(() => {
+      animatePixels(!isActiveRef.current);
+    }, autoPlayInterval);
+    return () => clearInterval(intervalId);
+  }, [autoPlay, autoPlayInterval]);
 
   return (
     <div

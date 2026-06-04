@@ -4,15 +4,19 @@ import PixelTransition from './PixelTransition';
 import LazyImage from '../components/LazyImage';
 import './Home.css';
 
+import g4 from '../../../photos/g4.jpeg';
+import g7 from '../../../photos/g7.jpeg';
+import g11 from '../../../photos/g11.jpeg';
+
 const heroSlides = [
   { src: '/photos/2.jpeg', alt: 'Trividha Heritage Saree Collection' },
   { src: '/photos/3.jpeg', alt: 'Trividha Signature Drape' },
 ];
 
 const sareeHighlights = [
-  { id: 1, src: '/photos/4.png', name: 'Banarasi Silk Grace', occasion: 'Wedding Season' },
-  { id: 2, src: '/photos/5.png', name: 'Kanjivaram Heritage', occasion: 'Festive Wear' },
-  { id: 3, src: '/photos/6.png', name: 'Chanderi Cotton Bloom', occasion: 'Corporate Chic' },
+  { id: 1, src: g4, name: 'Semi Kancheepuram Silk Saree', occasion: 'Loved By Many' },
+  { id: 2, src: g7, name: 'Kanchi cotton saree', occasion: 'Wearable Elegance' },
+  { id: 3, src: g11, name: 'Semi Kancheepuram Silk Saree', occasion: 'Your Everyday Luxury' },
 ];
 
 const testimonials = [
@@ -75,8 +79,6 @@ export default function Home() {
               <img
                 src={slide.src}
                 alt={slide.alt}
-                width="1920"
-                height="1080"
                 loading={i === 0 ? "eager" : "lazy"}
                 fetchPriority={i === 0 ? "high" : "low"}
               />
@@ -151,7 +153,7 @@ export default function Home() {
                         width="400"
                         height="400"
                         loading="lazy"
-                        style={{ width: "85%", height: "85%", objectFit: "contain" }}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />
                     </div>
                   }
@@ -172,6 +174,8 @@ export default function Home() {
                   pixelColor='#000000'
                   once={false}
                   animationStepDuration={0.4}
+                  autoPlay={true}
+                  autoPlayInterval={2000}
                   className="new-logo-img"
                   aspectRatio="100%"
                   style={{ backgroundColor: "var(--burgundy)", borderRadius: "var(--radius)" }}
@@ -231,9 +235,6 @@ export default function Home() {
           <div className="testi-grid">
             {testimonials.map((t, i) => (
               <div key={t.id} className="testi-card card-float" style={{ animationDelay: `${i * 0.15}s` }}>
-                <div className="testi-img-wrap">
-                  <LazyImage src={t.img} alt={t.name} width="400" height="300" loading="lazy" />
-                </div>
                 <div className="testi-body">
                   <span className="testi-quote-mark">"</span>
                   <p className="testi-quote">{t.quote}</p>

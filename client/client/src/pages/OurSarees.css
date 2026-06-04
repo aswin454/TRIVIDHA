@@ -1,0 +1,346 @@
+/* ── Our Sarees Page ─────────────────────────────────────────── */
+
+.our-sarees-page {
+  background: var(--ivory);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* ── Hero Section ────────────────────────────────────────────── */
+.sarees-hero {
+  padding: clamp(8rem, 15vh, 12rem) 0 clamp(4rem, 8vh, 6rem);
+  text-align: center;
+  background: var(--charcoal);
+  position: relative;
+  overflow: hidden;
+}
+
+.sarees-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(75, 4, 14, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.sarees-hero h1 {
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  color: var(--gold-light);
+  margin: 1rem 0;
+}
+
+.sarees-hero p {
+  max-width: 500px;
+  margin: 0 auto;
+  color: rgba(250, 247, 242, 0.7);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* ── Sarees List ─────────────────────────────────────────────── */
+.sarees-grid-section {
+  padding: clamp(4rem, 8vh, 8rem) 0;
+}
+
+.sarees-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 10vw, 8rem);
+}
+
+/* ── Saree Card ──────────────────────────────────────────────── */
+.saree-card {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.saree-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternate row layout */
+.saree-card:nth-child(even) {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+.saree-card:nth-child(even) .saree-gallery {
+  order: 2;
+}
+
+/* Gallery */
+.saree-gallery {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-image {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lift);
+  background: var(--ivory-2);
+}
+
+.main-image .img-wrapper {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.main-image .img-wrapper.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.price-tag {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(201, 169, 110, 0.95);
+  color: #111;
+  padding: 0.5rem 1.2rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: slideUpFade 0.6s ease forwards 0.3s;
+}
+
+@keyframes slideUpFade {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.gallery-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.main-image:hover .gallery-nav-btn {
+  opacity: 1;
+}
+
+.gallery-nav-btn:hover {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.prev-btn {
+  left: 1rem;
+}
+
+.next-btn {
+  right: 1rem;
+}
+
+/* Info */
+.saree-info {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.saree-header {
+  margin-bottom: 1.5rem;
+}
+
+.saree-id {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.saree-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.saree-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-sub);
+  margin-bottom: 2.5rem;
+}
+
+/* Animated Buy Button */
+.buy-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.5rem;
+  background: transparent;
+  border: 1px solid var(--burgundy);
+  border-radius: 50px;
+  color: var(--burgundy);
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.btn-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--burgundy);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  z-index: 0;
+}
+
+.btn-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: color 0.4s ease;
+}
+
+.buy-btn:hover {
+  border-color: var(--burgundy);
+  box-shadow: 0 0 20px rgba(75, 4, 14, 0.2);
+}
+
+.buy-btn:hover .btn-bg {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.buy-btn:hover .btn-content {
+  color: var(--ivory);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.buy-btn:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* ── CTA Banner ──────────────────────────────────────────────── */
+.sarees-cta {
+  background: var(--charcoal);
+  padding: clamp(4rem, 8vh, 6rem) 0;
+  text-align: center;
+  position: relative;
+}
+
+.sarees-cta h2 {
+  color: var(--gold-light);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.sarees-cta p {
+  color: var(--ivory);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.sarees-cta .btn-outline {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.sarees-cta .btn-outline:hover {
+  background: var(--gold);
+  color: var(--burgundy);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .saree-card, .saree-card:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .saree-card:nth-child(even) .saree-gallery {
+    order: 0;
+  }
+  
+  .main-image {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .saree-info {
+    padding: 0;
+    text-align: center;
+  }
+  
+  .saree-actions {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .saree-title {
+    font-size: 2.2rem;
+  }
+  .gallery-nav-btn {
+    opacity: 1; /* Always show on mobile */
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .buy-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+  .price-tag {
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+  }
+}
