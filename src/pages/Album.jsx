@@ -154,7 +154,7 @@ export default function Album() {
                     onClick={() => window.open('https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', '_blank')}
                   >
                     <div className="instagram-img-wrapper">
-                      <img src={photo.src} alt={photo.alt} loading="lazy" />
+                      <img src={photo.src} alt={photo.alt} loading="lazy" referrerPolicy="no-referrer" />
                       <div className="instagram-overlay">
                         <div className="overlay-content">
                           <Instagram size={24} color="white" />
