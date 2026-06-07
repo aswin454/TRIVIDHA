@@ -28,6 +28,7 @@ const sareesData = [
     name: 'Our handloom linen saree',
     description: `Our handloom linen saree is a perfect blend of comfort and class.
 Lightweight, breathable, and beautifully textured, linen brings a natural grace that is perfect for both everyday wear and refined occasions. It's for the woman who loves subtle luxury.`,
+    price: '₹ 25,000',
     images: [g1, g2, g3],
     waLink: 'https://wa.link/7kuigp'
   },
@@ -35,6 +36,7 @@ Lightweight, breathable, and beautifully textured, linen brings a natural grace 
     id: 2,
     name: 'semi Kanchipuram silk saree',
     description: 'Our premium semi Kanchipuram silk saree in green shade features delicate small border detailing and elegant small buttas , adding a touch of charm and grace.Perfect for those who love minimal beauty with a refined finish',
+    price: '₹ 18,500',
     images: [g4, g5, g6],
     waLink: 'https://wa.link/7kuigp'
   },
@@ -42,6 +44,7 @@ Lightweight, breathable, and beautifully textured, linen brings a natural grace 
     id: 3,
     name: 'Pure Handloom Kanchi Cotton',
     description: 'Introducing our pure handloom Kanchi cotton sarees where heritage meets everyday elegance.Crafted from fine cotton, these sarees are known for their breathable texture, durability, and soft comfort. The signature contrast borders and rich yet minimal finish make them perfect for both daily wear and special moments.This isn’t just a saree… it’s tradition you can feel, elegance you can wear',
+    price: '₹ 12,000',
     images: [g7, g8, g9],
     waLink: 'https://wa.link/7kuigp'
   },
@@ -49,6 +52,7 @@ Lightweight, breathable, and beautifully textured, linen brings a natural grace 
     id: 4,
     name: 'handloom semi Kanchipuram silk cotton saree',
     description: 'This handloom semi Kanchipuram silk cotton saree in a serene white and parrot green combination captures the beauty of subtle grace and vibrant charm.This creates a look that feels both calm and striking.. perfect for moments that deserve a touch of tradition with effortless style Perfect for functions and also as temple wear.',
+    price: '₹ 21,000',
     images: [g10, g11, g12],
     waLink: 'https://wa.link/7kuigp'
   },
@@ -56,6 +60,7 @@ Lightweight, breathable, and beautifully textured, linen brings a natural grace 
     id: 5,
     name: 'Pure Kanchipuram silk saree',
     description: 'This Pure Kanchipuram silk saree in a graceful ivory and mustard yellow combination is a perfect blend of tradition and elegance.',
+    price: '₹ 22,000',
     images: [g13, g14, g15],
     waLink: 'https://wa.link/7kuigp'
   },
@@ -65,6 +70,7 @@ Lightweight, breathable, and beautifully textured, linen brings a natural grace 
     description: `Presenting our Premium Semi Kanchipuram Saree in a stunning Vadamalli shade… grace that never goes unnoticed. ✨
 
 Woven with delicate butti motifs all over the body and finished with elegant striped detailing on the pallu, this is the kind of saree you’ll reach for when you want to feel effortlessly beautiful.`,
+    price: '₹ 19,500',
     images: [g16, g17, g18],
     waLink: 'https://wa.link/7kuigp'
   }
