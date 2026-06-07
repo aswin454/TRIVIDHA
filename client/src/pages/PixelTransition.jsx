@@ -12,7 +12,7 @@ function PixelTransition({
   autoPlay = false,
   autoPlayInterval = 4000,
   aspectRatio = '100%',
-  className = '',
+  className = '', 
   style = {}
 }) {
   const containerRef = useRef(null);

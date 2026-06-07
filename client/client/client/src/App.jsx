@@ -4,9 +4,10 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
-import BestOfMonth from './pages/BestOfMonth';
 import HowToShop from './pages/HowToShop';
 import Album from './pages/Album';
+import OurSarees from './pages/OurSarees';
+import WhatsAppButton from './components/WhatsAppButton';
 
 export default function App() {
   return (
@@ -16,10 +17,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/best" element={<BestOfMonth />} />
         <Route path="/shop" element={<HowToShop />} />
         <Route path="/album" element={<Album />} />
+        <Route path="/oursarees" element={<OurSarees />} />
       </Routes>
+      <WhatsAppButton />
       <Footer />
     </BrowserRouter>
   );
