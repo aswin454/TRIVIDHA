@@ -1,15 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, Users, Star, ShoppingBag, Image } from 'lucide-react';
+import { Menu, X, Search, ShoppingBag } from 'lucide-react';
 import './Navbar.css';
-
-const navItems = [
-  { path: '/', label: 'Home', icon: Home },
-  { path: '/about', label: 'About Us', icon: Users },
-  { path: '/best', label: 'Best of Month', icon: Star },
-  { path: '/shop', label: 'Shop', icon: ShoppingBag },
-  { path: '/album', label: 'Album', icon: Image },
-];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +15,7 @@ export default function Navbar() {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 40);
 
-      // If scrolling down and past the header, hide it. Otherwise, show it.
+      // Hide header when scrolling down past 100px, show when scrolling up
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setHidden(true);
       } else {
@@ -42,37 +34,45 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${hidden ? 'navbar--hidden' : ''}`}>
       <div className="navbar-inner">
-        {/* Logo */}
-        <NavLink to="/" className="navbar-logo">
-          <img src="/photos/1.png" alt="Trividha Logo" width="40" height="40" loading="eager" />
-        </NavLink>
+        {/* Left: Hamburger & Navigation Quick Links */}
+        <div className="navbar-left">
+          <button
+            className="menu-toggle-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation drawer"
+          >
+            {menuOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
+          </button>
 
-        {/* Desktop Nav */}
-        <ul className="navbar-links">
-          {navItems.map(({ path, label, icon: Icon }) => (
-            <li key={path}>
-              <NavLink to={path} end={path === '/'} className={({ isActive }) => `nav-link ${isActive ? 'nav-link--active' : ''}`}>
-                <Icon size={15} strokeWidth={1.6} />
-                <span>{label}</span>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+          <div className="navbar-desktop-links">
+            <NavLink to="/" end className="nav-link-custom">Home</NavLink>
+            <NavLink to="/oursarees" className="nav-link-custom">Collections</NavLink>
+            <NavLink to="/album" className="nav-link-custom">Heritage</NavLink>
+            <NavLink to="/about" className="nav-link-custom">Our Story</NavLink>
+            <NavLink to="/shop" className="nav-link-custom">How to Shop</NavLink>
+          </div>
+        </div>
 
-        {/* Mobile Hamburger */}
-        <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-          <span /><span />
-        </button>
+        {/* Center: Centered Logo and Subtitle */}
+        <div className="navbar-center">
+          <NavLink to="/" className="navbar-logo-centered">
+            <img src="/photos/1.png" alt="Trividha" className="logo-img" />
+            <span className="logo-subtitle">TRADITION | CRAFT | ELEGANCE</span>
+          </NavLink>
+        </div>
+
+        {/* Right: Search/Cart Icons (Removed) */}
+        <div className="navbar-right">
+        </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Drawer for all links */}
       <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
-        {navItems.map(({ path, label, icon: Icon }) => (
-          <NavLink key={path} to={path} end={path === '/'} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>
-            <Icon size={18} strokeWidth={1.5} />
-            {label}
-          </NavLink>
-        ))}
+        <NavLink to="/" end className="mobile-nav-link">Home</NavLink>
+        <NavLink to="/oursarees" className="mobile-nav-link">Collections</NavLink>
+        <NavLink to="/album" className="mobile-nav-link">Heritage</NavLink>
+        <NavLink to="/about" className="mobile-nav-link">Our Story</NavLink>
+        <NavLink to="/shop" className="mobile-nav-link">How to Shop</NavLink>
       </div>
     </nav>
   );

@@ -82,19 +82,28 @@
 }
 
 .team-card {
-  background: var(--ivory);
-  border: 1px solid rgba(201,169,110,0.15);
+  background: rgba(10, 6, 7, 0.38);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 169, 110, 0.15);
   border-radius: var(--radius);
   overflow: hidden;
+  transition: var(--transition);
+}
+.team-card:hover {
+  background: rgba(19, 13, 15, 0.55);
+  border-color: rgba(201, 169, 110, 0.35);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
 }
 .team-card-top {
   padding: 3rem 2rem 2rem;
-  background: linear-gradient(180deg, var(--ivory-2) 0%, var(--ivory) 100%);
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  border-bottom: 1px solid rgba(201,169,110,0.1);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.1);
 }
 .member-photo {
   width: 120px;

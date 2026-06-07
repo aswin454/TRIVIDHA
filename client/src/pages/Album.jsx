@@ -3,40 +3,9 @@ import { motion } from 'framer-motion';
 import { Instagram, Image as ImageIcon, ExternalLink } from 'lucide-react';
 import './Album.css';
 
-import g1 from '../../../photos/g1.jpeg';
-import g2 from '../../../photos/g2.jpeg';
-import g3 from '../../../photos/g3.jpeg';
-import g4 from '../../../photos/g4.jpeg';
-import g5 from '../../../photos/g5.jpeg';
-import g6 from '../../../photos/g6.jpeg';
-import g7 from '../../../photos/g7.jpeg';
-import g8 from '../../../photos/g8.jpeg';
-import g9 from '../../../photos/g9.jpeg';
-import g10 from '../../../photos/g10.jpeg';
-import g11 from '../../../photos/g11.jpeg';
-import g12 from '../../../photos/g12.jpeg';
-import g13 from '../../../photos/g13.jpeg';
-import g14 from '../../../photos/g14.jpeg';
-import g15 from '../../../photos/g15.jpeg';
-
-
-const instagramPhotos = [
-  { id: 1, src: g1, alt: 'Trividha Heritage Collection' },
-  { id: 2, src: g2, alt: 'Signature Silk Saree' },
-  { id: 3, src: g3, alt: 'Elegant Drapes' },
-  { id: 4, src: g4, alt: 'Handpicked Heritage' },
-  { id: 5, src: g5, alt: 'Handpicked Heritage' },
-  { id: 6, src: g6, alt: 'Modern Elegance' },
-  { id: 7, src: g7, alt: 'Modern Elegance' },
-  { id: 8, src: g8, alt: 'Modern Elegance' },
-  { id: 9, src: g9, alt: 'Modern Elegance' },
-  { id: 10, src: g10, alt: 'Modern Elegance' },
-  { id: 11, src: g11, alt: 'Modern Elegance' },
-  { id: 12, src: g12, alt: 'Modern Elegance' },
-  { id: 13, src: g13, alt: 'Modern Elegance' },
-  { id: 14, src: g14, alt: 'Modern Elegance' },
-  { id: 15, src: g15, alt: 'Modern Elegance' },
-];
+const API_KEY = 'AIzaSyA-pu1v4iDFlp4zB976aFE59Jr4bBTOFc8';
+const FOLDER_ID = '1g9SS9PI6oom7I2iw35Njp_YrWwBGUVG0'; // Corrected Folder ID
+// Note: The Google Drive folder MUST be set to "Anyone with the link can view"
 
 function useColumns() {
   const [cols, setCols] = useState(3);
@@ -55,21 +24,55 @@ function useColumns() {
 
 export default function Album() {
   const [activeTab, setActiveTab] = useState('all');
+  const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const columnsCount = useColumns();
-
   const columns = Array.from({ length: columnsCount }, () => []);
 
-  // Sort photos by ID descending (highest first, lowest last)
-  const sortedPhotos = [...instagramPhotos].sort((a, b) => b.id - a.id);
-
-  sortedPhotos.forEach((photo, index) => {
-    columns[index % columnsCount].push(photo);
-  });
-
   useEffect(() => {
+    const fetchPhotos = async () => {
+      if (FOLDER_ID === 'YOUR_GOOGLE_DRIVE_FOLDER_ID') {
+        setError('Please set your Google Drive Folder ID in the code (FOLDER_ID variable).');
+        setLoading(false);
+        return;
+      }
+      try {
+        // Query to get all files in the folder that are not trashed
+        const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents+and+trashed=false&key=${API_KEY}&fields=files(id,name,mimeType,createdTime,thumbnailLink)&orderBy=createdTime desc&pageSize=100`;
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.error) {
+          throw new Error(data.error.message);
+        }
+
+        // Filter only images
+        const fetchedPhotos = data.files
+          .filter(file => file.mimeType.startsWith('image/'))
+          .map((file) => ({
+            id: file.id,
+            src: file.thumbnailLink ? file.thumbnailLink.replace('=s220', '=s1000') : `https://drive.google.com/uc?export=view&id=${file.id}`,
+            alt: file.name
+          }));
+        
+        setPhotos(fetchedPhotos);
+      } catch (err) {
+        console.error('Error fetching photos:', err);
+        setError('Failed to load photos from Google Drive. Ensure the folder is public (Anyone with the link).');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchPhotos();
     window.scrollTo(0, 0);
   }, []);
+
+  photos.forEach((photo, index) => {
+    columns[index % columnsCount].push(photo);
+  });
 
   return (
     <main className="album-page">
@@ -81,7 +84,7 @@ export default function Album() {
           transition={{ duration: 1.2 }}
           className="album-hero-bg"
         >
-          <img src="/photos/7.png" alt="Hero Background" />
+          <img src="/photos/green_saree.jpg" alt="Hero Background" />
           <div className="album-hero-overlay" />
         </motion.div>
 
@@ -135,7 +138,10 @@ export default function Album() {
           </div>
 
           <div className="instagram-grid-masonry">
-            {columns.map((col, colIndex) => (
+            {loading && <div style={{ textAlign: 'center', width: '100%', padding: '2rem' }}>Loading images from Google Drive...</div>}
+            {error && <div style={{ textAlign: 'center', width: '100%', color: 'red', padding: '2rem' }}>{error}</div>}
+            
+            {!loading && !error && columns.map((col, colIndex) => (
               <div key={colIndex} className="grid-col">
                 {col.map((photo, index) => (
                   <motion.div
@@ -148,7 +154,7 @@ export default function Album() {
                     onClick={() => window.open('https://www.instagram.com/trividha.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', '_blank')}
                   >
                     <div className="instagram-img-wrapper">
-                      <img src={photo.src} alt={photo.alt} loading="lazy" />
+                      <img src={photo.src} alt={photo.alt} loading="lazy" referrerPolicy="no-referrer" />
                       <div className="instagram-overlay">
                         <div className="overlay-content">
                           <Instagram size={24} color="white" />

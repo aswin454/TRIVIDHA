@@ -84,7 +84,7 @@ export default function Album() {
           transition={{ duration: 1.2 }}
           className="album-hero-bg"
         >
-          <img src="/photos/7.png" alt="Hero Background" />
+          <img src="/photos/green_saree.jpg" alt="Hero Background" />
           <div className="album-hero-overlay" />
         </motion.div>
 

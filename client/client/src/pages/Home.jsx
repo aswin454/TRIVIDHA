@@ -4,15 +4,18 @@ import PixelTransition from './PixelTransition';
 import LazyImage from '../components/LazyImage';
 import './Home.css';
 
+import g4 from '../../../photos/g4.jpeg';
+import g7 from '../../../photos/g7.jpeg';
+import g11 from '../../../photos/g11.jpeg';
+
 const heroSlides = [
-  { src: '/photos/2.jpeg', alt: 'Trividha Heritage Saree Collection' },
-  { src: '/photos/3.jpeg', alt: 'Trividha Signature Drape' },
+  { src: '/photos/swirled_fabric.png', alt: 'Trividha Heritage Swirled Saree Fabric' },
 ];
 
 const sareeHighlights = [
-  { id: 1, src: '/photos/4.png', name: 'Banarasi Silk Grace', occasion: 'Wedding Season' },
-  { id: 2, src: '/photos/5.png', name: 'Kanjivaram Heritage', occasion: 'Festive Wear' },
-  { id: 3, src: '/photos/6.png', name: 'Chanderi Cotton Bloom', occasion: 'Corporate Chic' },
+  { id: 1, src: g4, name: 'Semi Kancheepuram Silk Saree', occasion: 'Loved By Many' },
+  { id: 2, src: g7, name: 'Kanchi cotton saree', occasion: 'Wearable Elegance' },
+  { id: 3, src: g11, name: 'Semi Kancheepuram Silk Saree', occasion: 'Your Everyday Luxury' },
 ];
 
 const testimonials = [
@@ -48,6 +51,7 @@ export default function Home() {
 
   // Hero slider auto-advance
   useEffect(() => {
+    if (heroSlides.length <= 1) return;
     const timer = setInterval(() => setCurrent(c => (c + 1) % heroSlides.length), 4500);
     return () => clearInterval(timer);
   }, []);
@@ -64,6 +68,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // [ignoring loop detection]
   return (
     <main className="page-wrapper">
       {/* ── Hero ─────────────────────────────────────────── */}
@@ -75,47 +80,34 @@ export default function Home() {
               <img
                 src={slide.src}
                 alt={slide.alt}
-                width="1920"
-                height="1080"
                 loading={i === 0 ? "eager" : "lazy"}
                 fetchPriority={i === 0 ? "high" : "low"}
               />
               <div className="hero-slide-overlay" />
             </div>
           ))}
-          {/* Slide dots */}
-          <div className="hero-dots">
-            {heroSlides.map((_, i) => (
-              <button
-                key={i}
-                className={`hero-dot ${i === current ? 'active' : ''}`}
-                onClick={() => setCurrent(i)}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
+          {/* Slide dots (if more than one slide) */}
+          {heroSlides.length > 1 && (
+            <div className="hero-dots">
+              {heroSlides.map((_, i) => (
+                <button
+                  key={i}
+                  className={`hero-dot ${i === current ? 'active' : ''}`}
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Text */}
         <div className="hero-content">
-          <span className="section-label hero-label">HANDPICKED HERITAGE. CURATED FOR YOU</span>
+          <span className="hero-subheadline">HANDPICKED HERITAGE. CURATED FOR YOU</span>
           <h1 className="hero-headline">
-            Trividha:<br />
-            <em>For Moments </em><br />
-            You'll Remember.
+            For Moments<br />
+            <span className="cursive-text">You'll Remember.</span>
           </h1>
-          <p className="hero-subtext">
-            From quiet everyday grace to life’s most meaningful celebrations, we handpick sarees across budgets and occasions, curating each piece with love, intention, and generational care<br className="br-desktop" /> the quiet poetry of a woman's soul.
-          </p>
-          <div className="hero-actions">
-            <Link to="/oursarees" className="btn-primary">Discover Our Sarees</Link>
-            <Link to="/shop" className="btn-outline">How to Shop</Link>
-          </div>
-          {/* Floating badge */}
-          <div className="hero-badge float-anim">
-            <span className="hero-badge-number">1000+</span>
-            <span className="hero-badge-text">Sarees Handpicked</span>
-          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -151,7 +143,7 @@ export default function Home() {
                         width="400"
                         height="400"
                         loading="lazy"
-                        style={{ width: "85%", height: "85%", objectFit: "contain" }}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />
                     </div>
                   }
@@ -172,6 +164,8 @@ export default function Home() {
                   pixelColor='#000000'
                   once={false}
                   animationStepDuration={0.4}
+                  autoPlay={true}
+                  autoPlayInterval={2000}
                   className="new-logo-img"
                   aspectRatio="100%"
                   style={{ backgroundColor: "var(--burgundy)", borderRadius: "var(--radius)" }}
@@ -202,14 +196,14 @@ export default function Home() {
             {sareeHighlights.map((s, i) => (
               <div key={s.id} className="highlight-card card-float" style={{ animationDelay: `${i * 0.15}s` }}>
                 <div className="highlight-img-wrap">
-                  <img src={s.src} alt={s.name} width="600" height="800" loading="lazy" />
+                  <img src={s.src} alt={s.name} loading="lazy" />
                   <div className="highlight-overlay">
                     <Link to="/oursarees" className="btn-gold">View Collection</Link>
                   </div>
                 </div>
                 <div className="highlight-info">
-                  <span className="highlight-occasion">{s.occasion}</span>
-                  <h3 className="highlight-name">{s.name}</h3>
+                  <span className="highlight-category">{s.occasion}</span>
+                  <h4 className="highlight-title">{s.name}</h4>
                 </div>
               </div>
             ))}
@@ -231,9 +225,6 @@ export default function Home() {
           <div className="testi-grid">
             {testimonials.map((t, i) => (
               <div key={t.id} className="testi-card card-float" style={{ animationDelay: `${i * 0.15}s` }}>
-                <div className="testi-img-wrap">
-                  <LazyImage src={t.img} alt={t.name} width="400" height="300" loading="lazy" />
-                </div>
                 <div className="testi-body">
                   <span className="testi-quote-mark">"</span>
                   <p className="testi-quote">{t.quote}</p>

@@ -2,25 +2,26 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ivory:       #FCFAFA;
-  --ivory-2:     #F7F2F2;
-  --gold:        #D4AF37;
-  --gold-light:  #F1E5AC;
-  --gold-dark:   #996515;
-  --burgundy:    #4b040e;
-  --burgundy-2:  #6a0614;
-  --charcoal:    #1a0104;
-  --warm-grey:   #7d6e6f;
-  --text-main:   #2d0208;
-  --text-sub:    #7d6e6f;
-  --white:       #FFFFFF;
-  --glass-bg:    rgba(250, 247, 242, 0.72);
-  --shadow-sm:   0 4px 20px rgba(100, 10, 21, 0.08);
-  --shadow-md:   0 12px 40px rgba(100, 10, 21, 0.12);
-  --shadow-lift: 0 20px 60px rgba(100, 10, 21, 0.18);
+  --ivory:       #0A0607;       /* Rich luxurious near-black */
+  --ivory-2:     #130D0F;     /* Muted panel background */
+  --gold:        #D4AF37;      /* Metallic gold */
+  --gold-light:  #F5E8C4;      /* Champagne gold for high contrast text */
+  --gold-dark:   #AA8015;      /* Bronze gold */
+  --burgundy:    #D4AF37;      /* Gold as primary accent */
+  --burgundy-2:  #E8C25B;      /* Lighter gold for hover */
+  --charcoal:    #050304;      /* Pure rich black */
+  --warm-grey:   #95888A;      /* Medium muted contrast grey */
+  --text-main:   #FDFBFB;      /* Ivory white for headings */
+  --text-sub:    #BEB2B4;      /* Silver-rose-grey for body paragraphs */
+  --white:       #181113;       /* Luxury card background */
+  --glass-bg:    rgba(19, 13, 15, 0.78); /* Dark frosted glass */
+  --shadow-sm:   0 4px 25px rgba(0, 0, 0, 0.55);
+  --shadow-md:   0 12px 45px rgba(0, 0, 0, 0.75);
+  --shadow-lift: 0 20px 60px rgba(0, 0, 0, 0.9);
   --radius:      16px;
   --radius-sm:   8px;
   --transition:  all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  --text-muted:  var(--text-sub);
 }
 
 html { scroll-behavior: smooth; }
@@ -174,7 +175,7 @@ button {
 }
 
 /* ─── Page Wrapper ─────────────────────────────────────────── */
-.page-wrapper { padding-top: 88px; min-height: 100vh; }
+.page-wrapper { padding-top: 0; min-height: 100vh; }
 
 /* ─── Animations ───────────────────────────────────────────── */
 @keyframes float {
@@ -285,7 +286,7 @@ button {
 
 @media (max-width: 480px) {
   /* Global section spacing */
-  .page-wrapper { padding-top: 80px; }
+  .page-wrapper { padding-top: 0; }
   section { padding: clamp(3rem, 7vh, 5rem) 0; }
   .container { padding: 0 1.25rem; }
 

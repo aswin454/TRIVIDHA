@@ -9,8 +9,7 @@ import g7 from '../../../photos/g7.jpeg';
 import g11 from '../../../photos/g11.jpeg';
 
 const heroSlides = [
-  { src: '/photos/2.jpeg', alt: 'Trividha Heritage Saree Collection' },
-  { src: '/photos/3.jpeg', alt: 'Trividha Signature Drape' },
+  { src: '/photos/swirled_fabric.png', alt: 'Trividha Heritage Swirled Saree Fabric' },
 ];
 
 const sareeHighlights = [
@@ -52,6 +51,7 @@ export default function Home() {
 
   // Hero slider auto-advance
   useEffect(() => {
+    if (heroSlides.length <= 1) return;
     const timer = setInterval(() => setCurrent(c => (c + 1) % heroSlides.length), 4500);
     return () => clearInterval(timer);
   }, []);
@@ -68,6 +68,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // [ignoring loop detection]
   return (
     <main className="page-wrapper">
       {/* ── Hero ─────────────────────────────────────────── */}
@@ -85,39 +86,28 @@ export default function Home() {
               <div className="hero-slide-overlay" />
             </div>
           ))}
-          {/* Slide dots */}
-          <div className="hero-dots">
-            {heroSlides.map((_, i) => (
-              <button
-                key={i}
-                className={`hero-dot ${i === current ? 'active' : ''}`}
-                onClick={() => setCurrent(i)}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
+          {/* Slide dots (if more than one slide) */}
+          {heroSlides.length > 1 && (
+            <div className="hero-dots">
+              {heroSlides.map((_, i) => (
+                <button
+                  key={i}
+                  className={`hero-dot ${i === current ? 'active' : ''}`}
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Text */}
         <div className="hero-content">
-          <span className="section-label hero-label">HANDPICKED HERITAGE. CURATED FOR YOU</span>
+          <span className="hero-subheadline">HANDPICKED HERITAGE. CURATED FOR YOU</span>
           <h1 className="hero-headline">
-            Trividha:<br />
-            <em>For Moments </em><br />
-            You'll Remember.
+            For Moments<br />
+            <span className="cursive-text">You'll Remember.</span>
           </h1>
-          <p className="hero-subtext">
-            From quiet everyday grace to life’s most meaningful celebrations, we handpick sarees across budgets and occasions, curating each piece with love, intention, and generational care<br className="br-desktop" /> the quiet poetry of a woman's soul.
-          </p>
-          <div className="hero-actions">
-            <Link to="/oursarees" className="btn-primary">Discover Our Sarees</Link>
-            <Link to="/shop" className="btn-outline">How to Shop</Link>
-          </div>
-          {/* Floating badge */}
-          <div className="hero-badge float-anim">
-            <span className="hero-badge-number">1000+</span>
-            <span className="hero-badge-text">Sarees Handpicked</span>
-          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -206,14 +196,14 @@ export default function Home() {
             {sareeHighlights.map((s, i) => (
               <div key={s.id} className="highlight-card card-float" style={{ animationDelay: `${i * 0.15}s` }}>
                 <div className="highlight-img-wrap">
-                  <img src={s.src} alt={s.name} width="600" height="800" loading="lazy" />
+                  <img src={s.src} alt={s.name} loading="lazy" />
                   <div className="highlight-overlay">
                     <Link to="/oursarees" className="btn-gold">View Collection</Link>
                   </div>
                 </div>
                 <div className="highlight-info">
-                  <span className="highlight-occasion">{s.occasion}</span>
-                  <h3 className="highlight-name">{s.name}</h3>
+                  <span className="highlight-category">{s.occasion}</span>
+                  <h4 className="highlight-title">{s.name}</h4>
                 </div>
               </div>
             ))}
