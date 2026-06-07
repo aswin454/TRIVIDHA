@@ -15,38 +15,63 @@ import g9 from '../../../photos/g9.jpeg';
 import g10 from '../../../photos/g10.jpeg';
 import g11 from '../../../photos/g11.jpeg';
 import g12 from '../../../photos/g12.jpeg';
+import g13 from '../../../photos/g13.jpeg';
+import g14 from '../../../photos/g14.jpeg';
+import g15 from '../../../photos/g15.jpeg';
+import g16 from '../../../photos/g16.jpeg';
+import g17 from '../../../photos/g17.jpeg';
+import g18 from '../../../photos/g18.jpeg';
 
 const sareesData = [
   {
     id: 1,
-    name: 'Kanjivaram Silk Royalty',
-    description: 'An elegant handwoven Kanjivaram silk saree with authentic zari borders. Perfect for weddings, receptions, and grand auspicious occasions.',
+    name: 'Our handloom linen saree',
+    description: `Our handloom linen saree is a perfect blend of comfort and class.
+Lightweight, breathable, and beautifully textured, linen brings a natural grace that is perfect for both everyday wear and refined occasions. It's for the woman who loves subtle luxury.`,
     price: '₹ 25,000',
     images: [g1, g2, g3],
     waLink: 'https://wa.link/7kuigp'
   },
   {
     id: 2,
-    name: 'Banarasi Heritage Drape',
-    description: 'A luxurious Banarasi brocade, featuring intricate floral motifs and a timeless appeal that never fades. An heirloom piece.',
+    name: 'semi Kanchipuram silk saree',
+    description: 'Our premium semi Kanchipuram silk saree in green shade features delicate small border detailing and elegant small buttas , adding a touch of charm and grace.Perfect for those who love minimal beauty with a refined finish',
     price: '₹ 18,500',
     images: [g4, g5, g6],
     waLink: 'https://wa.link/7kuigp'
   },
   {
     id: 3,
-    name: 'Chanderi Summer Bloom',
-    description: 'Lightweight Chanderi silk with delicate embroidery, offering comfort and sophistication for day events and pujas.',
+    name: 'Pure Handloom Kanchi Cotton',
+    description: 'Introducing our pure handloom Kanchi cotton sarees where heritage meets everyday elegance.Crafted from fine cotton, these sarees are known for their breathable texture, durability, and soft comfort. The signature contrast borders and rich yet minimal finish make them perfect for both daily wear and special moments.This isn’t just a saree… it’s tradition you can feel, elegance you can wear',
     price: '₹ 12,000',
     images: [g7, g8, g9],
     waLink: 'https://wa.link/7kuigp'
   },
   {
     id: 4,
-    name: 'Pochampally Ikat Splendor',
-    description: 'A masterpiece of precision, this double Ikat Pochampally brings vibrant colors and striking geometry to your wardrobe.',
+    name: 'handloom semi Kanchipuram silk cotton saree',
+    description: 'This handloom semi Kanchipuram silk cotton saree in a serene white and parrot green combination captures the beauty of subtle grace and vibrant charm.This creates a look that feels both calm and striking.. perfect for moments that deserve a touch of tradition with effortless style Perfect for functions and also as temple wear.',
     price: '₹ 21,000',
     images: [g10, g11, g12],
+    waLink: 'https://wa.link/7kuigp'
+  },
+  {
+    id: 5,
+    name: 'Pure Kanchipuram silk saree',
+    description: 'This Pure Kanchipuram silk saree in a graceful ivory and mustard yellow combination is a perfect blend of tradition and elegance.',
+    price: '₹ 22,000',
+    images: [g13, g14, g15],
+    waLink: 'https://wa.link/7kuigp'
+  },
+  {
+    id: 6,
+    name: 'Premium Semi Kanchipuram Saree',
+    description: `Presenting our Premium Semi Kanchipuram Saree in a stunning Vadamalli shade… grace that never goes unnoticed. ✨
+
+Woven with delicate butti motifs all over the body and finished with elegant striped detailing on the pallu, this is the kind of saree you’ll reach for when you want to feel effortlessly beautiful.`,
+    price: '₹ 19,500',
+    images: [g16, g17, g18],
     waLink: 'https://wa.link/7kuigp'
   }
 ];

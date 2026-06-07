@@ -46,7 +46,7 @@ export default function Navbar() {
 
           <div className="navbar-desktop-links">
             <NavLink to="/" end className="nav-link-custom">Home</NavLink>
-            <NavLink to="/oursarees" className="nav-link-custom">Collections</NavLink>
+            <NavLink to="/oursarees" className="nav-link-custom">signature</NavLink>
             <NavLink to="/album" className="nav-link-custom">Heritage</NavLink>
             <NavLink to="/about" className="nav-link-custom">Our Story</NavLink>
             <NavLink to="/shop" className="nav-link-custom">How to Shop</NavLink>
@@ -69,7 +69,7 @@ export default function Navbar() {
       {/* Drawer for all links */}
       <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
         <NavLink to="/" end className="mobile-nav-link">Home</NavLink>
-        <NavLink to="/oursarees" className="mobile-nav-link">Collections</NavLink>
+        <NavLink to="/oursarees" className="mobile-nav-link">signature</NavLink>
         <NavLink to="/album" className="mobile-nav-link">Heritage</NavLink>
         <NavLink to="/about" className="mobile-nav-link">Our Story</NavLink>
         <NavLink to="/shop" className="mobile-nav-link">How to Shop</NavLink>

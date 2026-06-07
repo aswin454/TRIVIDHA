@@ -18,6 +18,9 @@ import g12 from '../../../photos/g12.jpeg';
 import g13 from '../../../photos/g13.jpeg';
 import g14 from '../../../photos/g14.jpeg';
 import g15 from '../../../photos/g15.jpeg';
+import g16 from '../../../photos/g16.jpeg';
+import g17 from '../../../photos/g17.jpeg';
+import g18 from '../../../photos/g18.jpeg';
 
 const sareesData = [
   {
@@ -54,6 +57,15 @@ Lightweight, breathable, and beautifully textured, linen brings a natural grace 
     name: 'Pure Kanchipuram silk saree',
     description: 'This Pure Kanchipuram silk saree in a graceful ivory and mustard yellow combination is a perfect blend of tradition and elegance.',
     images: [g13, g14, g15],
+    waLink: 'https://wa.link/7kuigp'
+  },
+  {
+    id: 6,
+    name: 'Premium Semi Kanchipuram Saree',
+    description: `Presenting our Premium Semi Kanchipuram Saree in a stunning Vadamalli shade… grace that never goes unnoticed. ✨
+
+Woven with delicate butti motifs all over the body and finished with elegant striped detailing on the pallu, this is the kind of saree you’ll reach for when you want to feel effortlessly beautiful.`,
+    images: [g16, g17, g18],
     waLink: 'https://wa.link/7kuigp'
   }
 ];
