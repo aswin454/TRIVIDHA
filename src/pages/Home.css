@@ -376,7 +376,7 @@
 }
 .testimonials-section.visible { opacity: 1; transform: translateY(0); }
 .testi-header { text-align: center; margin-bottom: 3.5rem; }
-.testi-header .section-title { color: var(--ivory); }
+.testi-header .section-title { color: var(--gold); }
 .testi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -405,7 +405,7 @@
 }
 .testi-quote { color: rgba(250,247,242,0.72); font-style: italic; font-size: 0.9rem; line-height: 1.9; flex: 1; }
 .testi-author { margin-top: 1.3rem; display: flex; flex-direction: column; gap: 0.2rem; }
-.testi-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--ivory); }
+.testi-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--gold); }
 .testi-location { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
 
 /* ── Values Strip ──────────────────────────────────────────── */

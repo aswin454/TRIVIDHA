@@ -71,8 +71,8 @@ function SareeCard({ saree, index }) {
   const prevImg = () => setActiveImg((prev) => (prev - 1 + saree.images.length) % saree.images.length);
 
   return (
-    <div 
-      ref={cardRef} 
+    <div
+      ref={cardRef}
       className={`saree-card ${isVisible ? 'visible' : ''}`}
       style={{ animationDelay: `${index * 0.15}s` }}
     >
@@ -83,7 +83,7 @@ function SareeCard({ saree, index }) {
               <LazyImage src={img} alt={`${saree.name} view ${i + 1}`} width="500" height="700" loading="lazy" />
             </div>
           ))}
-          
+
           <button className="gallery-nav-btn prev-btn" onClick={prevImg} aria-label="Previous image">
             <ChevronLeft size={24} />
           </button>
@@ -94,14 +94,14 @@ function SareeCard({ saree, index }) {
           <div className="price-tag">{saree.price}</div>
         </div>
       </div>
-      
+
       <div className="saree-info">
         <div className="saree-header">
           <span className="saree-id">No. {String(saree.id).padStart(2, '0')}</span>
           <h2 className="saree-title">{saree.name}</h2>
         </div>
         <p className="saree-desc">{saree.description}</p>
-        
+
         <div className="saree-actions">
           <a href={saree.waLink} target="_blank" rel="noopener noreferrer" className="buy-btn">
             <span className="btn-bg"></span>
@@ -140,7 +140,7 @@ export default function OurSarees() {
           </div>
         </div>
       </section>
-      
+
       {/* Footer Banner */}
       <section className="sarees-cta">
         <div className="container">
