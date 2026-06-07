@@ -1,0 +1,133 @@
+.preloader-wrapper {
+  position: fixed;
+  inset: 0;
+  background-color: #0A0607; /* Brand background color */
+  z-index: 99999; /* Ensure it is on top of everything, including navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              visibility 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.preloader-wrapper--fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.05); /* Elegant zoom-out exit effect */
+  pointer-events: none;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.preloader-logo-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: preloaderFadeIn 1.2s ease-out forwards;
+}
+
+.preloader-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.25));
+  animation: logoPulse 3s ease-in-out infinite alternate;
+}
+
+.preloader-brand-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #FAF7F2; /* Ivory */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
+  opacity: 0;
+  animation: textExpand 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+}
+
+.preloader-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #D4AF37; /* Gold */
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin: 0 0 2rem 0;
+  opacity: 0;
+  animation: preloaderFadeIn 1.2s ease-out 0.6s forwards;
+}
+
+.preloader-line-container {
+  width: 180px;
+  height: 1px;
+  background-color: rgba(250, 247, 242, 0.08);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.preloader-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  transform: translateX(-100%);
+  animation: loadingProgress 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Keyframes */
+@keyframes preloaderFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes logoPulse {
+  0% {
+    transform: scale(0.97);
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.18));
+  }
+  100% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.45));
+  }
+}
+
+@keyframes textExpand {
+  from {
+    letter-spacing: 0.05em;
+    opacity: 0;
+  }
+  to {
+    letter-spacing: 0.2em;
+    opacity: 1;
+  }
+}
+
+@keyframes loadingProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

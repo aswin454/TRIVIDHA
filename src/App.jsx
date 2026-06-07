@@ -8,10 +8,12 @@ import HowToShop from './pages/HowToShop';
 import Album from './pages/Album';
 import OurSarees from './pages/OurSarees';
 import WhatsAppButton from './components/WhatsAppButton';
+import Preloader from './components/Preloader';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Preloader />
       <ScrollToTop />
       <Navbar />
       <Routes>

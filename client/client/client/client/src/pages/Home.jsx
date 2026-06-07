@@ -72,24 +72,11 @@ export default function Home() {
 
         {/* Text */}
         <div className="hero-content">
-          <span className="section-label hero-label">HANDPICKED HERITAGE. CURATED FOR YOU</span>
+          <span className="hero-subheadline">HANDPICKED HERITAGE. CURATED FOR YOU</span>
           <h1 className="hero-headline">
-            Trividha:<br />
-            <em>For Moments </em><br />
-            You'll Remember.
+            For Moments<br />
+            <span className="cursive-text">You'll Remember.</span>
           </h1>
-          <p className="hero-subtext">
-            From quiet everyday grace to life’s most meaningful celebrations, we handpick sarees across budgets and occasions, curating each piece with love, intention, and generational care<br className="br-desktop" /> the quiet poetry of a woman's soul.
-          </p>
-          <div className="hero-actions">
-            <Link to="/best" className="btn-primary">Discover This Month's Edit</Link>
-            <Link to="/shop" className="btn-outline">How to Shop</Link>
-          </div>
-          {/* Floating badge */}
-          <div className="hero-badge float-anim">
-            <span className="hero-badge-number">1000+</span>
-            <span className="hero-badge-text">Sarees Handpicked</span>
-          </div>
         </div>
 
         {/* Scroll indicator */}
