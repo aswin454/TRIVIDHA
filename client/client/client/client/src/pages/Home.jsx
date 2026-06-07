@@ -4,8 +4,7 @@ import PixelTransition from './PixelTransition';
 import './Home.css';
 
 const heroSlides = [
-  { src: '/photos/2.jpeg', alt: 'Trividha Heritage Saree Collection' },
-  { src: '/photos/3.jpeg', alt: 'Trividha Signature Drape' },
+  { src: '/photos/swirled_fabric.png', alt: 'Trividha Heritage Swirled Saree Fabric' },
 ];
 
 const sareeHighlights = [
@@ -22,6 +21,7 @@ export default function Home() {
 
   // Hero slider auto-advance
   useEffect(() => {
+    if (heroSlides.length <= 1) return;
     const timer = setInterval(() => setCurrent(c => (c + 1) % heroSlides.length), 4500);
     return () => clearInterval(timer);
   }, []);
