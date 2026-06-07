@@ -1,0 +1,326 @@
+/* ── Shop Hero ─────────────────────────────────────────────── */
+.shop-hero {
+  position: relative;
+  padding: clamp(8rem, 16vh, 12rem) 0 clamp(4rem, 8vh, 7rem);
+  overflow: hidden;
+}
+.shop-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, var(--ivory-2) 0%, var(--ivory) 55%, rgba(201,169,110,0.08) 100%);
+}
+.shop-hero::after {
+  content: '◇';
+  position: absolute;
+  font-size: 40vw;
+  color: rgba(201,169,110,0.04);
+  top: 50%;
+  right: -5vw;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-family: serif;
+  line-height: 1;
+}
+.shop-hero-content { position: relative; z-index: 1; }
+.shop-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-top: 1rem; }
+.shop-hero-content h1 em { color: var(--burgundy); font-style: italic; }
+.shop-hero-content p { color: var(--text-sub); max-width: 440px; margin-top: 0.8rem; }
+
+/* ── Process ───────────────────────────────────────────────── */
+.process-section {
+  padding: clamp(4rem, 8vh, 8rem) 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.process-section.visible { opacity: 1; transform: translateY(0); }
+.process-header { margin-bottom: 3.5rem; }
+.process-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Step tabs (left rail) */
+.step-tabs { display: flex; flex-direction: column; gap: 0; }
+.step-tab {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  background: none;
+  text-align: left;
+  padding: 0;
+  padding-bottom: 1.5rem;
+  cursor: pointer;
+}
+.step-tab-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.step-num {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,169,110,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--warm-grey);
+  transition: all 0.4s ease;
+  background: var(--white);
+}
+.step-tab.active .step-num {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--ivory);
+  box-shadow: 0 6px 20px rgba(100,10,21,0.2);
+}
+.step-connector {
+  width: 1.5px;
+  flex: 1;
+  min-height: 30px;
+  background: rgba(201,169,110,0.2);
+  margin-top: 6px;
+}
+.step-tab-content { padding-top: 0.55rem; }
+.step-title {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  transition: color 0.3s;
+}
+.step-tab.active .step-title { color: var(--burgundy); }
+.step-sub {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--warm-grey);
+  letter-spacing: 0.08em;
+  margin-top: 0.2rem;
+}
+
+/* Step panel (right) */
+.step-detail {
+  position: relative;
+  min-height: 350px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid rgba(201,169,110,0.15);
+  box-shadow: var(--shadow-sm);
+  padding: 3rem;
+  overflow: hidden;
+}
+.step-panel {
+  position: absolute;
+  inset: 3rem;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.step-panel.show {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.step-icon-big {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.step-detail-title {
+  font-size: 1.6rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.step-detail-desc { color: var(--text-sub); font-size: 0.95rem; line-height: 1.95; }
+.step-platforms {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+.platform-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+  background: rgba(201,169,110,0.1);
+  color: var(--gold-dark);
+  border: 1px solid rgba(201,169,110,0.25);
+}
+
+/* ── Occasions ─────────────────────────────────────────────── */
+.occasions-section {
+  position: relative;
+  padding: clamp(5rem, 10vh, 9rem) 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.occasions-section.visible { opacity: 1; transform: translateY(0); }
+.occasions-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(170deg, var(--charcoal) 0%, #2a1812 100%);
+  z-index: 0;
+}
+.occasions-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.occasions-header .section-title { color: var(--ivory); }
+.occasions-sub {
+  color: rgba(250,247,242,0.55);
+  max-width: 450px;
+  margin: 0.8rem auto 0;
+}
+.occasions-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 28vw, 340px), 1fr));
+  gap: 1.5rem;
+}
+.occasion-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,169,110,0.12);
+  border-radius: var(--radius);
+  padding: 2rem 1.8rem;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(25px);
+}
+.occasions-section.visible .occasion-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease var(--delay, 0s), transform 0.7s ease var(--delay, 0s),
+              background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.occasion-card:hover {
+  background: rgba(201,169,110,0.07);
+  border-color: rgba(201,169,110,0.35);
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+.occasion-icon { font-size: 1.8rem; display: block; margin-bottom: 1rem; }
+.occasion-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--ivory);
+  margin-bottom: 0.6rem;
+}
+.occasion-desc { font-size: 0.84rem; color: rgba(250,247,242,0.55); line-height: 1.85; }
+
+/* ── Final CTA ─────────────────────────────────────────────── */
+.shop-cta-section {
+  padding: clamp(5rem, 10vh, 9rem) 0;
+  background: var(--ivory-2);
+}
+.shop-cta-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+.shop-cta-inner h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+.shop-cta-inner h2 em { color: var(--burgundy); font-style: italic; }
+.shop-cta-inner p { color: var(--text-sub); line-height: 1.9; margin-bottom: 0; }
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+/* Tablet (≤860px) */
+@media (max-width: 860px) {
+  .process-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+
+  /* Steps become a horizontal scrollable pill row */
+  .step-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .step-tabs::-webkit-scrollbar { display: none; }
+  .step-tab {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.9rem 1.2rem;
+    border-radius: 14px;
+    background: var(--ivory-2);
+    border: 1px solid rgba(201,169,110,0.2);
+    flex-shrink: 0;
+  }
+  .step-tab.active { background: rgba(100,10,21,0.06); border-color: var(--burgundy); }
+  .step-tab-indicator { flex-direction: row; gap: 0; }
+  .step-connector { display: none; }
+
+  /* Step detail: switch from absolute positioning to normal flow */
+  .step-detail {
+    min-height: auto;
+    padding: 2rem;
+    position: relative;
+  }
+  .step-panel {
+    position: relative;
+    inset: auto;
+    opacity: 0;
+    transform: translateX(15px);
+    display: none;
+    pointer-events: none;
+  }
+  .step-panel.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    animation: fadeUp 0.45s ease forwards;
+  }
+}
+
+/* Large phone (≤640px) */
+@media (max-width: 640px) {
+  .shop-hero-content h1 { font-size: clamp(2rem, 9vw, 3rem); }
+  .process-header { text-align: center; }
+  .process-header .gold-line { margin: 0.8rem auto 0; }
+  .step-detail { padding: 1.6rem; border-radius: var(--radius-sm); }
+  .step-detail-title { font-size: 1.3rem; }
+  .step-icon-big { font-size: 2rem; margin-bottom: 0.8rem; }
+  .occasions-grid { grid-template-columns: 1fr; }
+  .occasion-card { padding: 1.5rem 1.3rem; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .shop-cta-inner { padding: 0 0.5rem; }
+}
+
+/* Small phone (≤480px) */
+@media (max-width: 480px) {
+  .step-tab { padding: 0.7rem 0.9rem; }
+  .step-num { width: 34px; height: 34px; font-size: 0.85rem; }
+  .step-title { font-size: 0.95rem; }
+  .step-sub { display: none; }
+  .platform-tag { font-size: 0.65rem; padding: 0.3rem 0.65rem; }
+  .occasions-grid { gap: 1rem; }
+}

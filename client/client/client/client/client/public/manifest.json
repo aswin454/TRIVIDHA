@@ -1,0 +1,27 @@
+{
+  "short_name": "Trividha",
+  "name": "Trividha – Weaving Grace into Every Fold",
+  "icons": [
+    {
+      "src": "/photos/1.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/photos/1.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/photos/1.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4b040e",
+  "background_color": "#FCFAFA"
+}

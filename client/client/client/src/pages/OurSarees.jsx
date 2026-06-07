@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ShoppingBag, ChevronRight, ChevronLeft, MessageCircle } from 'lucide-react';
+import { ShoppingBag, ChevronRight, ChevronLeft, MessageCircle, Instagram } from 'lucide-react';
 import LazyImage from '../components/LazyImage';
 import './OurSarees.css';
 
@@ -95,6 +95,27 @@ function SareeCard({ saree, index }) {
   const nextImg = () => setActiveImg((prev) => (prev + 1) % saree.images.length);
   const prevImg = () => setActiveImg((prev) => (prev - 1 + saree.images.length) % saree.images.length);
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) nextImg();
+    if (isRightSwipe) prevImg();
+  };
+
   return (
     <div
       ref={cardRef}
@@ -102,7 +123,12 @@ function SareeCard({ saree, index }) {
       style={{ animationDelay: `${index * 0.15}s` }}
     >
       <div className="saree-gallery">
-        <div className="main-image">
+        <div
+          className="main-image"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {saree.images.map((img, i) => (
             <div key={i} className={`img-wrapper ${i === activeImg ? 'active' : ''}`}>
               <LazyImage src={img} alt={`${saree.name} view ${i + 1}`} width="500" height="700" loading="lazy" />
@@ -115,8 +141,6 @@ function SareeCard({ saree, index }) {
           <button className="gallery-nav-btn next-btn" onClick={nextImg} aria-label="Next image">
             <ChevronRight size={24} />
           </button>
-
-          <div className="price-tag">{saree.price}</div>
         </div>
       </div>
 
@@ -149,7 +173,6 @@ export default function OurSarees() {
       <section className="sarees-hero">
         <div className="container">
           <span className="section-label">Trividha Collection</span>
-          <span className="gold-line"></span>
           <h1>Our Sarees.</h1>
           <p>Explore our curated selection of handwoven poetry, designed to elevate your grace on every occasion.</p>
         </div>
@@ -169,12 +192,18 @@ export default function OurSarees() {
       {/* Footer Banner */}
       <section className="sarees-cta">
         <div className="container">
-          <h2>Looking for something specific?</h2>
-          <p>Reach out to us directly for personalized styling and exclusive pieces not listed here.</p>
-          <a href="https://wa.link/7kuigp" target="_blank" rel="noopener noreferrer" className="btn-outline">
-            <MessageCircle size={18} style={{ marginRight: '8px' }} />
-            Chat with Trividha
-          </a>
+          <h2>Looking to view more sarees?</h2>
+          <p>We have many more handpicked pieces beyond this collection. Visit our Instagram to discover more.</p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="https://www.instagram.com/trividha.official" target="_blank" rel="noopener noreferrer" className="btn-outline">
+              <Instagram size={18} style={{ marginRight: '8px' }} />
+              Visit our Instagram
+            </a>
+            <a href="https://wa.link/7kuigp" target="_blank" rel="noopener noreferrer" className="btn-outline">
+              <MessageCircle size={18} style={{ marginRight: '8px' }} />
+              Chat with Trividha
+            </a>
+          </div>
         </div>
       </section>
     </main>

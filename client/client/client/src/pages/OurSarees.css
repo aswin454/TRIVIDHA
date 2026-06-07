@@ -8,7 +8,7 @@
 
 /* ── Hero Section ────────────────────────────────────────────── */
 .sarees-hero {
-  padding: clamp(8rem, 15vh, 12rem) 0 clamp(4rem, 8vh, 6rem);
+  padding: clamp(6rem, 12vh, 10rem) 1.5rem clamp(3rem, 6vh, 5rem);
   text-align: center;
   background: var(--charcoal);
   position: relative;
@@ -82,6 +82,7 @@
 
 .main-image {
   position: relative;
+  width: 100%;
   aspect-ratio: 3/4;
   border-radius: var(--radius);
   overflow: hidden;
@@ -106,29 +107,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.price-tag {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background: rgba(201, 169, 110, 0.95);
-  color: #111;
-  padding: 0.5rem 1.2rem;
-  font-family: 'Jost', sans-serif;
-  font-weight: 600;
-  font-size: 1.1rem;
-  border-radius: 40px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  backdrop-filter: blur(4px);
-  z-index: 2;
-  transform: translateY(10px);
-  opacity: 0;
-  animation: slideUpFade 0.6s ease forwards 0.3s;
-}
-
-@keyframes slideUpFade {
-  to { transform: translateY(0); opacity: 1; }
 }
 
 .gallery-nav-btn {
@@ -202,6 +180,7 @@
   line-height: 1.8;
   color: var(--text-sub);
   margin-bottom: 2.5rem;
+  white-space: pre-wrap;
 }
 
 /* Animated Buy Button */
@@ -298,9 +277,13 @@
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .sarees-grid-section {
+    padding: 3rem 0;
+  }
+
   .saree-card, .saree-card:nth-child(even) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
   
   .saree-card:nth-child(even) .saree-gallery {
@@ -308,12 +291,12 @@
   }
   
   .main-image {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
   }
   
   .saree-info {
-    padding: 0;
+    padding: 0 1rem;
     text-align: center;
   }
   
@@ -321,26 +304,51 @@
     display: flex;
     justify-content: center;
   }
+
+  .saree-desc {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 640px) {
-  .saree-title {
-    font-size: 2.2rem;
+  .sarees-hero h1 {
+    font-size: 2.5rem;
   }
+  
+  .saree-title {
+    font-size: 1.8rem;
+  }
+
   .gallery-nav-btn {
-    opacity: 1; /* Always show on mobile */
-    width: 36px;
-    height: 36px;
+    opacity: 1 !important; /* Always show on mobile */
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .sarees-list {
+    gap: 4rem;
   }
 }
 
 @media (max-width: 480px) {
+  .sarees-hero {
+    padding-top: 5rem;
+  }
+
+  .sarees-hero p {
+    font-size: 0.95rem;
+  }
+
   .buy-btn {
     width: 100%;
     padding: 1rem 1.5rem;
+    font-size: 0.9rem;
   }
-  .price-tag {
-    font-size: 1rem;
-    padding: 0.4rem 1rem;
+
+  .saree-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 }

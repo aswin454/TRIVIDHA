@@ -68,6 +68,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // [ignoring loop detection]
   return (
     <main className="page-wrapper">
       {/* ── Hero ─────────────────────────────────────────── */}

@@ -9,7 +9,7 @@ const sarees = [
     id: 1,
     img: '/photos/4.png',
     name: 'Banarasi Brocade Splendor',
-    priceRange: 'available soon',
+    priceRange: '₹12,000 – ₹18,000',
     fabric: 'Pure Katan Silk',
     work: 'Zari Brocade Weave',
     love: 'Pair this with antique gold jewellery — the richness of the brocade and the glint of gold creates an unmatched heirloom look.',
@@ -19,7 +19,7 @@ const sarees = [
     id: 2,
     img: '/photos/5.png',
     name: 'Kanjivaram Crimson Heritage',
-    priceRange: 'available soon',
+    priceRange: '₹15,000 – ₹22,000',
     fabric: 'Pure Mulberry Silk',
     work: 'Temple Border, Korvai Technique',
     love: 'The contrast border lifts the entire drape. Wear with a simple blouse — let the saree speak. Perfect for a bride\'s family look.',
@@ -29,7 +29,7 @@ const sarees = [
     id: 3,
     img: '/photos/6.png',
     name: 'Chanderi Moonlight Bloom',
-    priceRange: 'available soon',
+    priceRange: '₹4,500 – ₹7,000',
     fabric: 'Chanderi Silk-Cotton',
     work: 'Booti Embroidery, Zari Border',
     love: 'Drape it in the butterfly style for a modern festival look. Light as a breeze, stunning as sunrise — your first salary saree for Amma.',
@@ -39,7 +39,7 @@ const sarees = [
     id: 4,
     img: '/photos/7.png',
     name: 'Linen Noir Executive',
-    priceRange: 'available soon',
+    priceRange: '₹3,500 – ₹5,500',
     fabric: 'Pure Linen',
     work: 'Woven Stripes, Self Border',
     love: 'The ideal corporate saree — structured, breathable, and effortlessly elegant. A pencil blouse and a sleek bun complete the power look.',
@@ -49,7 +49,7 @@ const sarees = [
     id: 5,
     img: '/photos/8.png',
     name: 'Pochampally Ikat Dream',
-    priceRange: 'available soon ',
+    priceRange: '₹8,000 – ₹12,000',
     fabric: 'Handloom Silk',
     work: 'Double Ikat Resist Dyeing',
     love: 'A piece of true artisan craft. Each motif is dyed before weaving — no two sarees are exactly alike. For the woman who loves stories in her threads.',
@@ -57,10 +57,32 @@ const sarees = [
   },
 ];
 
-
+const testimonials = [
+  {
+    id: 1,
+    img: '/photos/9.png',
+    name: 'Maria Thomas',
+    location: 'Dubai, United Arab Emirates',
+    quote: 'I honestly had zero knowledge about sarees. All I did was share what I liked... my colours, the occasion, and what I felt comfortable wearing. Parvathy understood it so naturally and curated something that felt completely like me. It didn’t feel like choosing a saree. It felt like finding one that was already mine. Truly a 10/10 experience in saree curation.',
+  },
+  {
+    id: 2,
+    img: '/photos/10.png',
+    name: 'Divya M.',
+    location: 'Chennai',
+    quote: 'Sethuparvathy helped me pick the perfect saree for my first board meeting. I walked in with confidence I didn\'t know a piece of fabric could give me.',
+  },
+  {
+    id: 3,
+    img: '/photos/11.png',
+    name: 'Anitha K.',
+    location: 'Bengaluru',
+    quote: 'What sets Trividha apart is the love behind every recommendation. It\'s not just shopping, it\'s a conversation with someone who truly understands sarees.',
+  },
+];
 
 const waMsg = encodeURIComponent('Hi Trividha! I saw your monthly edit and I\'d love to know more and reserve a saree.');
-const waLink = `https://wa.link/7kuigp`;
+const waLink = `https://wa.me/917736687371?text=${waMsg}`;
 
 const FLOATING_LINES_GRADIENT = ["#3b0d0d", "#e12d2d", "#540303", "#0e0101"];
 
@@ -68,6 +90,7 @@ export default function BestOfMonth() {
   const [active, setActive] = useState(0);
   const [visibleSections, setVisibleSections] = useState({});
   const heroRef = useRef(null);
+  const testimonialsRef = useRef(null);
   const editRef = useRef(null);
 
   useEffect(() => {
@@ -77,7 +100,7 @@ export default function BestOfMonth() {
       }),
       { threshold: 0.1 }
     );
-    [heroRef, editRef].forEach(r => r.current && observer.observe(r.current));
+    [heroRef, testimonialsRef, editRef].forEach(r => r.current && observer.observe(r.current));
     return () => observer.disconnect();
   }, []);
 
@@ -195,6 +218,33 @@ export default function BestOfMonth() {
         </div>
       </section>
 
+      {/* ── Testimonials ───────────────────────────────── */}
+      <section id="testimonials" ref={testimonialsRef} className={`testimonials-section ${visibleSections.testimonials ? 'visible' : ''}`}>
+        <div className="container">
+          <div className="testi-header">
+            <span className="section-label">Real Women, Real Moments</span>
+            <span className="gold-line" style={{ margin: '0.8rem auto' }} />
+            <h2 className="section-title">Love Stories.</h2>
+          </div>
+          <div className="testi-grid">
+            {testimonials.map((t, i) => (
+              <div key={t.id} className="testi-card card-float" style={{ transitionDelay: `${i * 0.15}s` }}>
+                <div className="testi-img-wrap">
+                  <LazyImage src={t.img} alt={t.name} width="400" height="300" loading="lazy" />
+                </div>
+                <div className="testi-body">
+                  <span className="testi-quote-mark">"</span>
+                  <p className="testi-quote">{t.quote}</p>
+                  <div className="testi-author">
+                    <span className="testi-name">{t.name}</span>
+                    <span className="testi-location">{t.location}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
