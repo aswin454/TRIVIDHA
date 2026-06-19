@@ -376,7 +376,7 @@
 }
 .testimonials-section.visible { opacity: 1; transform: translateY(0); }
 .testi-header { text-align: center; margin-bottom: 3.5rem; }
-.testi-header .section-title { color: var(--ivory); }
+.testi-header .section-title { color: var(--gold); }
 .testi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
