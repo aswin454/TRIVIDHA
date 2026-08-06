@@ -15,7 +15,7 @@ export default function StylingGuide() {
 
         {/* Header Section */}
         <div className="section-header-center" style={{ marginBottom: '2rem', textAlign: 'center' }}>
-          <span className="section-label">Exclusive Weaves</span>
+          <span className="section-label">KERALA SAREES</span>
           <h1 className="guide-headline" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.8rem', fontWeight: '400', margin: '0.5rem 0 1.5rem' }}>
             Styling Guide 2026
           </h1>
