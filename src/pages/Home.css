@@ -443,7 +443,151 @@
   line-height: 1.8;
 }
 
+/* ── Styling Guide Promo Section ───────────────────────────── */
+.styling-guide-promo-section {
+  padding: clamp(5rem, 9vh, 8rem) 0;
+  background: var(--ivory);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.styling-guide-promo-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.styling-guide-promo-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(3rem, 5vw, 6rem);
+  align-items: center;
+}
+
+.styling-guide-promo-text p {
+  color: var(--text-sub);
+  margin-bottom: 1.5rem;
+}
+
+.promo-guide-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+.promo-guide-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  margin-bottom: 0.6rem;
+}
+.promo-guide-list li span {
+  color: var(--gold);
+}
+
+.promo-guide-actions {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* Premium 3D Book Mockup */
+.styling-guide-promo-visual {
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+}
+.promo-book-mockup {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  transform: rotateY(-22deg) rotateX(10deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.65);
+  border-radius: 4px 12px 12px 4px;
+}
+.promo-book-mockup:hover {
+  transform: rotateY(-10deg) rotateX(5deg) translateY(-8px);
+  box-shadow: 25px 25px 50px rgba(0, 0, 0, 0.8);
+}
+.promo-book-cover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #181113 0%, #0A0607 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-left: 8px solid #281a1d; /* Book Spine look */
+  border-radius: 4px 12px 12px 4px;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: var(--text-main);
+  box-shadow: inset -3px 0 10px rgba(0,0,0,0.4);
+}
+.promo-book-brand {
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  font-weight: 600;
+}
+.promo-book-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0.8rem 0;
+}
+.promo-book-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--gold-light);
+}
+.promo-book-year {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.3);
+  padding: 4px 10px;
+  margin-top: 1rem;
+}
+.promo-book-footer {
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  color: var(--warm-grey);
+  text-transform: uppercase;
+}
+
 /* ── Responsive ────────────────────────────────────────────── */
+
+/* Tablet Responsive Additions */
+@media (max-width: 900px) {
+  .styling-guide-promo-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .styling-guide-promo-visual {
+    order: -1;
+    margin: 0 auto;
+  }
+  .styling-guide-promo-text {
+    text-align: center;
+  }
+  .styling-guide-promo-text .gold-line {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .promo-guide-list {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .promo-guide-actions {
+    justify-content: center;
+  }
+}
 
 /* Tablet (≤900px) */
 @media (max-width: 900px) {

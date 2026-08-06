@@ -7,6 +7,7 @@ import AboutUs from './pages/AboutUs';
 import HowToShop from './pages/HowToShop';
 import Album from './pages/Album';
 import OurSarees from './pages/OurSarees';
+import StylingGuide from './pages/StylingGuide';
 import WhatsAppButton from './components/WhatsAppButton';
 import Preloader from './components/Preloader';
 
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/shop" element={<HowToShop />} />
         <Route path="/album" element={<Album />} />
         <Route path="/oursarees" element={<OurSarees />} />
+        <Route path="/styling-guide" element={<StylingGuide />} />
       </Routes>
       <WhatsAppButton />
       <Footer />

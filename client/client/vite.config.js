@@ -53,6 +53,56 @@ copyFileToDestinations('public/photos/swirled_fabric.png', [
   '../public/photos/swirled_fabric.png',
 ]);
 
+// Copy the Saree Styling Guide PDF to all public directories dynamically
+const copyPdfToDestinations = () => {
+  const filename = 'Trividha Kerala Saree Styling Guide 2026 (2).pdf';
+  let srcPath = '';
+  const searchPaths = [
+    path.resolve(filename),
+    path.resolve('..', filename),
+    path.resolve('..', '..', filename),
+    path.resolve('..', '..', '..', filename)
+  ];
+  for (const p of searchPaths) {
+    if (fs.existsSync(p)) {
+      srcPath = p;
+      break;
+    }
+  }
+
+  if (!srcPath) {
+    console.warn(`[Vite Config] Styling Guide PDF source not found in search paths.`);
+    return;
+  }
+
+  const relativeDests = [
+    'public',
+    '../public',
+    '../client/public',
+    '../client/client/public',
+    '../client/client/client/public',
+    '../client/client/client/client/public',
+    'client/public',
+    'client/client/public',
+    'client/client/client/public'
+  ];
+
+  relativeDests.forEach(relDir => {
+    const dirPath = path.resolve(relDir);
+    if (fs.existsSync(dirPath)) {
+      const destPath = path.join(dirPath, filename);
+      try {
+        fs.copyFileSync(srcPath, destPath);
+        console.log(`[Vite Config] Automatically copied PDF to: ${destPath}`);
+      } catch (err) {
+        console.error(`[Vite Config] Failed to copy PDF to ${destPath}:`, err.message);
+      }
+    }
+  });
+};
+
+copyPdfToDestinations();
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],

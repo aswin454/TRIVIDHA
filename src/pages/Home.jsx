@@ -47,6 +47,7 @@ export default function Home() {
   const [isVisible, setIsVisible] = useState({});
   const storyRef = useRef(null);
   const highlightRef = useRef(null);
+  const stylingGuideRef = useRef(null);
   const testimonialsRef = useRef(null);
 
   // Hero slider auto-advance
@@ -64,7 +65,7 @@ export default function Home() {
       }),
       { threshold: 0.15 }
     );
-    [storyRef, highlightRef, testimonialsRef].forEach(r => r.current && observer.observe(r.current));
+    [storyRef, highlightRef, stylingGuideRef, testimonialsRef].forEach(r => r.current && observer.observe(r.current));
     return () => observer.disconnect();
   }, []);
 
@@ -210,6 +211,50 @@ export default function Home() {
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <Link to="/oursarees" className="btn-primary">See All Our Sarees →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Styling Guide Promo ─────────────────────────────── */}
+      <section id="styling-guide-promo" ref={stylingGuideRef} className={`styling-guide-promo-section ${isVisible['styling-guide-promo'] ? 'visible' : ''}`}>
+        <div className="container">
+          <div className="styling-guide-promo-inner">
+            <div className="styling-guide-promo-visual">
+              <div className="promo-book-mockup">
+                <div className="promo-book-cover">
+                  <div className="promo-book-brand">TRIVIDHA</div>
+                  <div className="promo-book-divider"></div>
+                  <h3 className="promo-book-title">Kerala Saree<br />Styling Guide</h3>
+                  <div className="promo-book-year">2026 EDIT</div>
+                  <div className="promo-book-footer">Tradition | Craft | Elegance</div>
+                </div>
+              </div>
+            </div>
+            <div className="styling-guide-promo-text">
+              <span className="section-label">Exclusive Release</span>
+              <span className="gold-line" />
+              <h2 className="section-title">Kerala Saree Styling Guide 2026.</h2>
+              <p>
+                Carry tradition with contemporary grace. Our newly released styling manual shares expert secrets
+                from the Trividha family on choosing weaves, pairing unique blouses, coordinating temple jewellery,
+                and mastering modern draping styles.
+              </p>
+              <ul className="promo-guide-list">
+                <li><span>✦</span> Step-by-step draping methods</li>
+                <li><span>✦</span> Blouse and jewelry pairing lookbooks</li>
+                <li><span>✦</span> Fabric care tips for pure handlooms</li>
+              </ul>
+              <div className="promo-guide-actions">
+                <Link to="/styling-guide" className="btn-primary">Explore Guide</Link>
+                <a
+                  href="/Trividha%20Kerala%20Saree%20Styling%20Guide%202026%20(2).pdf"
+                  download
+                  className="btn-outline"
+                >
+                  Download PDF
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

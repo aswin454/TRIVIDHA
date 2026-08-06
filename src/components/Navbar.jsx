@@ -50,6 +50,7 @@ export default function Navbar() {
             <NavLink to="/album" className="nav-link-custom">Heritage</NavLink>
             <NavLink to="/about" className="nav-link-custom">Our Story</NavLink>
             <NavLink to="/shop" className="nav-link-custom">How to Shop</NavLink>
+            <NavLink to="/styling-guide" className="nav-link-custom">Styling Guide</NavLink>
           </div>
         </div>
 
@@ -73,6 +74,7 @@ export default function Navbar() {
         <NavLink to="/album" className="mobile-nav-link">Heritage</NavLink>
         <NavLink to="/about" className="mobile-nav-link">Our Story</NavLink>
         <NavLink to="/shop" className="mobile-nav-link">How to Shop</NavLink>
+        <NavLink to="/styling-guide" className="mobile-nav-link">Styling Guide</NavLink>
       </div>
     </nav>
   );
